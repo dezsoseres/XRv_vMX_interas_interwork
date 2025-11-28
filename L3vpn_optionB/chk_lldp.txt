@@ -1,0 +1,105 @@
+rr1#sh lldp neighbors 
+Capability codes:
+    (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+    (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID           Local Intf     Hold-time  Capability      Port ID
+xrv4                Gi1            120        R               GigabitEthernet0/0/0/3
+
+Total entries displayed: 1
+
+RP/0/RP0/CPU0:xrv1#sh lldp neighbors 
+Fri Nov 28 17:59:22.716 UTC
+Capability codes:
+        (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+        (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID       Local Intf                      Hold-time  Capability      Port ID
+xrv2            GigabitEthernet0/0/0/0          120        R               GigabitEthernet0/0/0/0
+xrv3            GigabitEthernet0/0/0/1          120        R               GigabitEthernet0/0/0/1
+vmx1            GigabitEthernet0/0/0/2          120        B,R             ge-0/0/2
+
+Total entries displayed: 3
+
+RP/0/RP0/CPU0:xrv2#sh lldp neighbors 
+Fri Nov 28 17:59:34.715 UTC
+Capability codes:
+        (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+        (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID       Local Intf                      Hold-time  Capability      Port ID
+xrv1            GigabitEthernet0/0/0/0          120        R               GigabitEthernet0/0/0/0
+xrv4            GigabitEthernet0/0/0/1          120        R               GigabitEthernet0/0/0/1
+vmx2            GigabitEthernet0/0/0/2          120        B,R             ge-0/0/2
+
+Total entries displayed: 3
+
+RP/0/RP0/CPU0:xrv3#sh lldp neighbors 
+Fri Nov 28 17:59:48.448 UTC
+Capability codes:
+        (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+        (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID       Local Intf                      Hold-time  Capability      Port ID
+xrv4            GigabitEthernet0/0/0/0          120        R               GigabitEthernet0/0/0/0
+xrv1            GigabitEthernet0/0/0/1          120        R               GigabitEthernet0/0/0/1
+
+Total entries displayed: 2
+
+RP/0/RP0/CPU0:xrv4#sh lldp neighbors 
+Fri Nov 28 18:00:03.407 UTC
+Capability codes:
+        (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+        (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID       Local Intf                      Hold-time  Capability      Port ID
+xrv3            GigabitEthernet0/0/0/0          120        R               GigabitEthernet0/0/0/0
+xrv2            GigabitEthernet0/0/0/1          120        R               GigabitEthernet0/0/0/1
+rr1             GigabitEthernet0/0/0/3          120        R               Gi1
+
+Total entries displayed: 3
+
+root@vmx1> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/2           -                   00:30:94:3c:14:32   GigabitEthernet0/0/0/2 xrv1                
+ge-0/0/1           -                   2c:6b:f5:72:b5:c0   ge-0/0/1           vmx3                
+ge-0/0/0           -                   2c:6b:f5:86:19:c0   ge-0/0/0           vmx2                
+
+root@vmx2> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/2           -                   00:30:94:3c:14:32   GigabitEthernet0/0/0/2 xrv2                
+ge-0/0/1           -                   2c:6b:f5:70:17:c0   ge-0/0/1           vmx4                
+ge-0/0/0           -                   2c:6b:f5:82:61:c0   ge-0/0/0           vmx1                
+
+root@vmx3> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/3           -                   2c:6b:f5:41:f8:c0   ge-0/0/3           vmx5                
+ge-0/0/0           -                   2c:6b:f5:70:17:c0   ge-0/0/0           vmx4                
+ge-0/0/1           -                   2c:6b:f5:82:61:c0   ge-0/0/1           vmx1                
+
+root@vmx4> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/3           -                   2c:6b:f5:2b:f7:c0   ge-0/0/3           vmx6                
+ge-0/0/0           -                   2c:6b:f5:72:b5:c0   ge-0/0/0           vmx3                
+ge-0/0/1           -                   2c:6b:f5:86:19:c0   ge-0/0/1           vmx2                
+ge-0/0/4           -                   2c:6b:f5:cd:b7:c0   ge-0/0/4           rr2                 
+
+root@vmx5> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/0           -                   2c:6b:f5:2b:f7:c0   ge-0/0/0           vmx6                
+ge-0/0/3           -                   2c:6b:f5:72:b5:c0   ge-0/0/3           vmx3                
+
+root@vmx6> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/0           -                   2c:6b:f5:41:f8:c0   ge-0/0/0           vmx5                
+ge-0/0/3           -                   2c:6b:f5:70:17:c0   ge-0/0/3           vmx4                
+
+root@rr2> show lldp neighbors   
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/4           -                   2c:6b:f5:70:17:c0   ge-0/0/4           vmx4                
+
+
+
+
+
+

@@ -1,0 +1,638 @@
+RP/0/RP0/CPU0:xrv1#
+router static
+ address-family ipv4 unicast
+  20.0.0.1/32 GigabitEthernet0/0/0/2 20.0.0.1
+  20.0.0.1/32 GigabitEthernet0/0/0/2
+ !
+!
+
+RP/0/RP0/CPU0:xrv2#
+router static
+ address-family ipv4 unicast
+  20.0.0.3/32 GigabitEthernet0/0/0/2 20.0.0.3
+  20.0.0.3/32 GigabitEthernet0/0/0/2
+ !
+!
+
+RP/0/RP0/CPU0:xrv1#  sh cef vrf A
+Fri Nov 28 18:50:48.872 UTC
+
+Prefix              Next Hop            Interface
+------------------- ------------------- ------------------
+0.0.0.0/0           drop                default handler 
+0.0.0.0/32          broadcast
+11.11.11.1/32       receive             Loopback100
+11.11.11.2/32       1.1.1.2/32          <recursive>
+11.11.11.3/32       1.1.1.3/32          <recursive>
+11.11.11.4/32       1.1.1.4/32          <recursive>
+12.12.12.1/32       20.0.0.1/32         <recursive>
+12.12.12.2/32       20.0.0.1/32         <recursive>
+12.12.12.3/32       20.0.0.1/32         <recursive>
+12.12.12.4/32       20.0.0.1/32         <recursive>
+12.12.12.5/32       20.0.0.1/32         <recursive>
+12.12.12.6/32       20.0.0.1/32         <recursive>
+224.0.0.0/4         0.0.0.0/32          
+224.0.0.0/24        receive
+255.255.255.255/32  broadcast
+
+RP/0/RP0/CPU0:xrv2#  sh cef vrf A
+Fri Nov 28 18:51:04.570 UTC
+
+Prefix              Next Hop            Interface
+------------------- ------------------- ------------------
+0.0.0.0/0           drop                default handler 
+0.0.0.0/32          broadcast
+11.11.11.1/32       1.1.1.1/32          <recursive>
+11.11.11.2/32       receive             Loopback100
+11.11.11.3/32       1.1.1.3/32          <recursive>
+11.11.11.4/32       1.1.1.4/32          <recursive>
+12.12.12.1/32       20.0.0.3/32         <recursive>
+12.12.12.2/32       20.0.0.3/32         <recursive>
+12.12.12.3/32       20.0.0.3/32         <recursive>
+12.12.12.4/32       20.0.0.3/32         <recursive>
+12.12.12.5/32       20.0.0.3/32         <recursive>
+12.12.12.6/32       20.0.0.3/32         <recursive>
+224.0.0.0/4         0.0.0.0/32          
+224.0.0.0/24        receive
+255.255.255.255/32  broadcast
+RP/0/RP0/CPU0:xrv2#  
+
+RP/0/RP0/CPU0:xrv3#sh cef vrf A
+Fri Nov 28 18:50:28.498 UTC
+
+Prefix              Next Hop            Interface
+------------------- ------------------- ------------------
+0.0.0.0/0           drop                default handler 
+0.0.0.0/32          broadcast
+11.11.11.1/32       1.1.1.1/32          <recursive>
+11.11.11.2/32       1.1.1.2/32          <recursive>
+11.11.11.3/32       receive             Loopback100
+11.11.11.4/32       1.1.1.4/32          <recursive>
+12.12.12.1/32       1.1.1.2/32          <recursive>
+12.12.12.2/32       1.1.1.2/32          <recursive>
+12.12.12.3/32       1.1.1.2/32          <recursive>
+12.12.12.4/32       1.1.1.2/32          <recursive>
+12.12.12.5/32       1.1.1.2/32          <recursive>
+12.12.12.6/32       1.1.1.2/32          <recursive>
+224.0.0.0/4         0.0.0.0/32          
+224.0.0.0/24        receive
+255.255.255.255/32  broadcast
+RP/0/RP0/CPU0:xrv3#
+
+RP/0/RP0/CPU0:xrv4#sh cef vrf A
+Fri Nov 28 18:48:28.043 UTC
+
+Prefix              Next Hop            Interface
+------------------- ------------------- ------------------
+0.0.0.0/0           drop                default handler 
+0.0.0.0/32          broadcast
+11.11.11.1/32       1.1.1.1/32          <recursive>
+11.11.11.2/32       1.1.1.2/32          <recursive>
+11.11.11.3/32       1.1.1.3/32          <recursive>
+11.11.11.4/32       receive             Loopback100
+12.12.12.1/32       1.1.1.2/32          <recursive>
+12.12.12.2/32       1.1.1.2/32          <recursive>
+12.12.12.3/32       1.1.1.2/32          <recursive>
+12.12.12.4/32       1.1.1.2/32          <recursive>
+12.12.12.5/32       1.1.1.2/32          <recursive>
+12.12.12.6/32       1.1.1.2/32          <recursive>
+224.0.0.0/4         0.0.0.0/32          
+224.0.0.0/24        receive
+255.255.255.255/32  broadcast
+RP/0/RP0/CPU0:xrv4#
+
+
+RP/0/RP0/CPU0:xrv1#sh cef vrf A detail 
+Fri Nov 28 19:21:33.991 UTC
+0.0.0.0/0, version 0, proxy default, default route handler, drop adjacency, internal 0x1001011 0xf0 (ptr 0xe76ebf0) [1], 0x400 (0xd953528), 0x0 (0x0)
+ Updated Nov 28 14:13:06.092
+ Prefix Len 0, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd614270 0x0]
+    next hop 0.0.0.0/32
+     drop adjacency
+0.0.0.0/32, version 0, broadcast
+  Updated Nov 28 14:13:06.093
+  Prefix Len 32
+11.11.11.1/32, version 2, attached, receive
+  Updated Nov 28 14:13:21.099
+  Prefix Len 32
+  internal 0x3006041 (ptr 0xe76e1c8) [3], 0x400 (0xd9536d8), 0x0 (0x0)
+, receive adjacency, internal 0x3006041 0x0 (ptr 0xe76e1c8) [3], 0x400 (0xd9536d8), 0x0 (0x0)
+ Updated Nov 28 14:13:21.099
+ Prefix Len 32, traffic index 0, precedence n/a, priority 0
+   via Loopback100, 25 dependencies, weight 0, class 0 [flags 0x8]
+    path-idx 0 NHID 0x0 [0xd6143a0 0x0]
+     receive adjacency
+11.11.11.2/32, version 8, internal 0x1000001 0x30 (ptr 0xe76c7a0) [1], 0x600 (0xd954068), 0xa08 (0xef8a508)
+ Updated Nov 28 14:18:48.330
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb32ba8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24002/0/21
+     local label 24014 
+     next hop 10.0.0.1/32 Gi0/0/0/0    labels imposed {ImplNull 24005}
+11.11.11.3/32, version 4, internal 0x1000001 0x30 (ptr 0xe76c950) [1], 0x600 (0xd953f90), 0xa08 (0xef8a418)
+ Updated Nov 28 14:18:46.783
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.3/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb32278 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.3/32 via 24005/0/21
+     local label 24012 
+     next hop 10.0.0.5/32 Gi0/0/0/1    labels imposed {ImplNull 24007}
+11.11.11.4/32, version 6, internal 0x1000001 0x30 (ptr 0xe76c878) [1], 0x600 (0xd953e28), 0xa08 (0xef8a238)
+ Updated Nov 28 14:18:46.784
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.4/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb31f70 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.4/32 via 24007/0/21
+     local label 24013 
+     next hop 10.0.0.1/32 Gi0/0/0/0    labels imposed {24006 24006}
+     next hop 10.0.0.5/32 Gi0/0/0/1    labels imposed {24005 24006}
+12.12.12.1/32, version 9, internal 0x5000001 0x30 (ptr 0xe76c6c8) [1], 0x600 (0xd954020), 0xa08 (0xef8a558)
+ Updated Nov 28 17:51:14.219
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.2/32, version 16, internal 0x5000001 0x30 (ptr 0xe76e0f0) [1], 0x600 (0xd953de0), 0xa08 (0xef8a6e8)
+ Updated Nov 28 17:57:06.968
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.3/32, version 11, internal 0x5000001 0x30 (ptr 0xe76c438) [1], 0x600 (0xd953d50), 0xa08 (0xef8a5a8)
+ Updated Nov 28 17:57:02.474
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.4/32, version 12, internal 0x5000001 0x30 (ptr 0xe76c360) [1], 0x600 (0xd9540b0), 0xa08 (0xef8a5f8)
+ Updated Nov 28 17:57:02.475
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.5/32, version 13, internal 0x5000001 0x30 (ptr 0xe76c1d8) [1], 0x600 (0xd9540f8), 0xa08 (0xef8a648)
+ Updated Nov 28 17:57:02.474
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.6/32, version 14, internal 0x5000001 0x30 (ptr 0xe76c030) [1], 0x600 (0xd954140), 0xa08 (0xef8a698)
+ Updated Nov 28 17:57:02.474
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.1/32, 3 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb32f08 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.1/32 via 24001/0/21
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.1/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+224.0.0.0/4, version 0, external adjacency, internal 0x1040001 0xf0 (ptr 0xe76e5e8) [1], 0x400 (0xd953648), 0x0 (0x0)
+ Updated Nov 28 14:13:06.093
+ Prefix Len 4, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd614568 0x0]
+    next hop 0.0.0.0/32
+     external adjacency
+224.0.0.0/24, version 0, receive
+  Updated Nov 28 14:13:06.092
+  Prefix Len 24
+  internal 0x1004001 (ptr 0xe76e7f8) [1], 0x400 (0xd953600), 0x0 (0x0)
+, receive adjacency, internal 0x1004001 0xf0 (ptr 0xe76e7f8) [1], 0x400 (0xd953600), 0x0 (0x0)
+ Updated Nov 28 14:13:06.092
+ Prefix Len 24, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 25 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd6143a0 0x0]
+    next hop 0.0.0.0/32
+     receive adjacency
+255.255.255.255/32, version 0, broadcast
+  Updated Nov 28 14:13:06.092
+  Prefix Len 32
+RP/0/RP0/CPU0:xrv1#  
+
+RP/0/RP0/CPU0:xrv2#sh cef vrf A detail 
+Fri Nov 28 19:22:24.812 UTC
+0.0.0.0/0, version 0, proxy default, default route handler, drop adjacency, internal 0x1001011 0xf0 (ptr 0xe742bf0) [1], 0x400 (0xd953528), 0x0 (0x0)
+ Updated Nov 28 14:13:34.837
+ Prefix Len 0, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd614270 0x0]
+    next hop 0.0.0.0/32
+     drop adjacency
+0.0.0.0/32, version 0, broadcast
+  Updated Nov 28 14:13:34.836
+  Prefix Len 32
+11.11.11.1/32, version 8, internal 0x1000001 0x30 (ptr 0xe7409b0) [1], 0x600 (0xd953f00), 0xa08 (0xef8a378)
+ Updated Nov 28 14:18:51.397
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.1/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb32e30 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.1/32 via 24001/0/21
+     local label 24013 
+     next hop 10.0.0.0/32 Gi0/0/0/0    labels imposed {ImplNull 24000}
+11.11.11.2/32, version 2, attached, receive
+  Updated Nov 28 14:13:49.844
+  Prefix Len 32
+  internal 0x3006041 (ptr 0xe7421c8) [3], 0x400 (0xd9536d8), 0x0 (0x0)
+, receive adjacency, internal 0x3006041 0x0 (ptr 0xe7421c8) [3], 0x400 (0xd9536d8), 0x0 (0x0)
+ Updated Nov 28 14:13:49.844
+ Prefix Len 32, traffic index 0, precedence n/a, priority 0
+   via Loopback100, 25 dependencies, weight 0, class 0 [flags 0x8]
+    path-idx 0 NHID 0x0 [0xd6143a0 0x0]
+     receive adjacency
+11.11.11.3/32, version 4, internal 0x1000001 0x30 (ptr 0xe740b60) [1], 0x600 (0xd953fd8), 0xa08 (0xef8a468)
+ Updated Nov 28 14:18:44.307
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.3/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb32828 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.3/32 via 24003/0/21
+     local label 24010 
+     next hop 10.0.0.0/32 Gi0/0/0/0    labels imposed {24005 24007}
+     next hop 10.0.0.7/32 Gi0/0/0/1    labels imposed {24002 24007}
+11.11.11.4/32, version 6, internal 0x1000001 0x30 (ptr 0xe740a88) [1], 0x600 (0xd953f90), 0xa08 (0xef8a4b8)
+ Updated Nov 28 14:18:46.235
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.4/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xdb32750 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.4/32 via 24006/0/21
+     local label 24012 
+     next hop 10.0.0.7/32 Gi0/0/0/1    labels imposed {ImplNull 24006}
+12.12.12.1/32, version 10, internal 0x5000001 0x30 (ptr 0xe7420f0) [1], 0x600 (0xd9541d0), 0xa08 (0xef8a738)
+ Updated Nov 28 17:57:06.240
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.2/32, version 9, internal 0x5000001 0x30 (ptr 0xe7408d8) [1], 0x600 (0xd954020), 0xa08 (0xef8a558)
+ Updated Nov 28 17:51:54.849
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.3/32, version 11, internal 0x5000001 0x30 (ptr 0xe740648) [1], 0x600 (0xd954218), 0xa08 (0xef8a788)
+ Updated Nov 28 17:57:06.239
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.4/32, version 12, internal 0x5000001 0x30 (ptr 0xe740570) [1], 0x600 (0xd954260), 0xa08 (0xef8a7d8)
+ Updated Nov 28 17:57:06.240
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.5/32, version 13, internal 0x5000001 0x30 (ptr 0xe7403e8) [1], 0x600 (0xd9542a8), 0xa08 (0xef8a828)
+ Updated Nov 28 17:57:06.240
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+12.12.12.6/32, version 14, internal 0x5000001 0x30 (ptr 0xe740240) [1], 0x600 (0xd9542f0), 0xa08 (0xef8a878)
+ Updated Nov 28 17:57:06.240
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 20.0.0.3/32, 5 dependencies, recursive, bgp-ext [flags 0x6020]
+    path-idx 0 NHID 0x0 [0xdb330b8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 20.0.0.3/32 via 24000/0/21
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+     next hop 20.0.0.3/32 Gi0/0/0/2    labels imposed {ImplNull 16}
+224.0.0.0/4, version 0, external adjacency, internal 0x1040001 0xf0 (ptr 0xe7425e8) [1], 0x400 (0xd953648), 0x0 (0x0)
+ Updated Nov 28 14:13:34.838
+ Prefix Len 4, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd614568 0x0]
+    next hop 0.0.0.0/32
+     external adjacency
+224.0.0.0/24, version 0, receive
+  Updated Nov 28 14:13:34.837
+  Prefix Len 24
+  internal 0x1004001 (ptr 0xe7427f8) [1], 0x400 (0xd953600), 0x0 (0x0)
+, receive adjacency, internal 0x1004001 0xf0 (ptr 0xe7427f8) [1], 0x400 (0xd953600), 0x0 (0x0)
+ Updated Nov 28 14:13:34.837
+ Prefix Len 24, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 25 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xd6143a0 0x0]
+    next hop 0.0.0.0/32
+     receive adjacency
+255.255.255.255/32, version 0, broadcast
+  Updated Nov 28 14:13:34.836
+  Prefix Len 32
+RP/0/RP0/CPU0:xrv2#   
+
+RP/0/RP0/CPU0:xrv3#sh cef vrf A detail 
+Fri Nov 28 19:22:47.895 UTC
+0.0.0.0/0, version 0, proxy default, default route handler, drop adjacency, internal 0x1001011 0xf0 (ptr 0xe783bf0) [1], 0x400 (0xe0d4528), 0x0 (0x0)
+ Updated Nov 28 14:13:52.985
+ Prefix Len 0, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xdd0c270 0x0]
+    next hop 0.0.0.0/32
+     drop adjacency
+0.0.0.0/32, version 0, broadcast
+  Updated Nov 28 14:13:52.984
+  Prefix Len 32
+11.11.11.1/32, version 5, internal 0x5000001 0x30 (ptr 0xe781c98) [1], 0x600 (0xe0d4e70), 0xa08 (0xef942d8)
+ Updated Nov 28 14:18:51.584
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.1/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb828 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.1/32 via 24000/0/21
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {ImplNull 24000}
+11.11.11.2/32, version 4, internal 0x5000001 0x30 (ptr 0xe781d70) [1], 0x600 (0xe0d49f0), 0xa08 (0xef94238)
+ Updated Nov 28 14:18:48.208
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24005}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24005}
+11.11.11.3/32, version 2, attached, receive
+  Updated Nov 28 14:14:07.992
+  Prefix Len 32
+  internal 0x3006041 (ptr 0xe7831c8) [3], 0x400 (0xe0d46d8), 0x0 (0x0)
+, receive adjacency, internal 0x3006041 0x0 (ptr 0xe7831c8) [3], 0x400 (0xe0d46d8), 0x0 (0x0)
+ Updated Nov 28 14:14:07.992
+ Prefix Len 32, traffic index 0, precedence n/a, priority 0
+   via Loopback100, 23 dependencies, weight 0, class 0 [flags 0x8]
+    path-idx 0 NHID 0x0 [0xdd0c3a0 0x0]
+     receive adjacency
+11.11.11.4/32, version 3, internal 0x5000001 0x30 (ptr 0xe781e48) [1], 0x600 (0xe0d4888), 0xa08 (0xef945a8)
+ Updated Nov 28 14:18:46.420
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.4/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bbba8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.4/32 via 24005/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {ImplNull 24006}
+12.12.12.1/32, version 7, internal 0x5000001 0x30 (ptr 0xe7830f0) [1], 0x600 (0xe0d4f00), 0xa08 (0xef94378)
+ Updated Nov 28 17:57:06.444
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24011}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24011}
+12.12.12.2/32, version 6, internal 0x5000001 0x30 (ptr 0xe781bc0) [1], 0x600 (0xe0d4eb8), 0xa08 (0xef941e8)
+ Updated Nov 28 17:51:55.058
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24009}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24009}
+12.12.12.3/32, version 8, internal 0x5000001 0x30 (ptr 0xe781930) [1], 0x600 (0xe0d4f48), 0xa08 (0xef94418)
+ Updated Nov 28 17:57:06.443
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24016}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24016}
+12.12.12.4/32, version 9, internal 0x5000001 0x30 (ptr 0xe781858) [1], 0x600 (0xe0d4f90), 0xa08 (0xef943c8)
+ Updated Nov 28 17:57:06.443
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24017}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24017}
+12.12.12.5/32, version 10, internal 0x5000001 0x30 (ptr 0xe7816d0) [1], 0x600 (0xe0d4fd8), 0xa08 (0xef94648)
+ Updated Nov 28 17:57:06.443
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24014}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24014}
+12.12.12.6/32, version 11, internal 0x5000001 0x30 (ptr 0xe781528) [1], 0x600 (0xe0d5020), 0xa08 (0xef94698)
+ Updated Nov 28 17:57:06.443
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2bb560 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.3/32 Gi0/0/0/0    labels imposed {24001 24015}
+     next hop 10.0.0.4/32 Gi0/0/0/1    labels imposed {24002 24015}
+224.0.0.0/4, version 0, external adjacency, internal 0x1040001 0xf0 (ptr 0xe7835e8) [1], 0x400 (0xe0d4648), 0x0 (0x0)
+ Updated Nov 28 14:13:52.984
+ Prefix Len 4, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xdd0c568 0x0]
+    next hop 0.0.0.0/32
+     external adjacency
+224.0.0.0/24, version 0, receive
+  Updated Nov 28 14:13:52.985
+  Prefix Len 24
+  internal 0x1004001 (ptr 0xe7837f8) [1], 0x400 (0xe0d4600), 0x0 (0x0)
+, receive adjacency, internal 0x1004001 0xf0 (ptr 0xe7837f8) [1], 0x400 (0xe0d4600), 0x0 (0x0)
+ Updated Nov 28 14:13:52.985
+ Prefix Len 24, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 23 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xdd0c3a0 0x0]
+    next hop 0.0.0.0/32
+     receive adjacency
+255.255.255.255/32, version 0, broadcast
+  Updated Nov 28 14:13:52.984
+  Prefix Len 32
+RP/0/RP0/CPU0:xrv3#   
+
+RP/0/RP0/CPU0:xrv4#sh cef vrf A detail 
+Fri Nov 28 19:20:57.869 UTC
+0.0.0.0/0, version 0, proxy default, default route handler, drop adjacency, internal 0x1001011 0xf0 (ptr 0xe7f1bf0) [1], 0x400 (0xe0ef528), 0x0 (0x0)
+ Updated Nov 28 14:14:07.123
+ Prefix Len 0, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xddb0270 0x0]
+    next hop 0.0.0.0/32
+     drop adjacency
+0.0.0.0/32, version 0, broadcast
+  Updated Nov 28 14:14:07.124
+  Prefix Len 32
+11.11.11.1/32, version 5, internal 0x5000001 0x30 (ptr 0xe7efbc0) [1], 0x600 (0xe0efeb8), 0xa08 (0xef8a698)
+ Updated Nov 28 14:18:51.311
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.1/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2ce6c8 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.1/32 via 24000/0/21
+     next hop 10.0.0.2/32 Gi0/0/0/0    labels imposed {24000 24000}
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {24001 24000}
+11.11.11.2/32, version 4, internal 0x5000001 0x30 (ptr 0xe7efc98) [1], 0x600 (0xe0efe70), 0xa08 (0xef8a6e8)
+ Updated Nov 28 14:18:47.940
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24005}
+11.11.11.3/32, version 3, internal 0x5000001 0x30 (ptr 0xe7efd70) [1], 0x600 (0xe0efe28), 0xa08 (0xef8a788)
+ Updated Nov 28 14:18:44.168
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.3/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cec80 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.3/32 via 24002/0/21
+     next hop 10.0.0.2/32 Gi0/0/0/0    labels imposed {ImplNull 24007}
+11.11.11.4/32, version 2, attached, receive
+  Updated Nov 28 14:14:22.207
+  Prefix Len 32
+  internal 0x3006041 (ptr 0xe7f11c8) [3], 0x400 (0xe0ef6d8), 0x0 (0x0)
+, receive adjacency, internal 0x3006041 0x0 (ptr 0xe7f11c8) [3], 0x400 (0xe0ef6d8), 0x0 (0x0)
+ Updated Nov 28 14:14:22.207
+ Prefix Len 32, traffic index 0, precedence n/a, priority 0
+   via Loopback100, 25 dependencies, weight 0, class 0 [flags 0x8]
+    path-idx 0 NHID 0x0 [0xddb03a0 0x0]
+     receive adjacency
+12.12.12.1/32, version 7, internal 0x5000001 0x30 (ptr 0xe7f10f0) [1], 0x600 (0xe0eff48), 0xa08 (0xef8a4b8)
+ Updated Nov 28 17:57:06.169
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24011}
+12.12.12.2/32, version 6, internal 0x5000001 0x30 (ptr 0xe7efae8) [1], 0x600 (0xe0eff00), 0xa08 (0xef8a3c8)
+ Updated Nov 28 17:51:54.799
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24009}
+12.12.12.3/32, version 8, internal 0x5000001 0x30 (ptr 0xe7ef858) [1], 0x600 (0xe0eff90), 0xa08 (0xef8a468)
+ Updated Nov 28 17:57:06.170
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24016}
+12.12.12.4/32, version 9, internal 0x5000001 0x30 (ptr 0xe7ef780) [1], 0x600 (0xe0effd8), 0xa08 (0xef8a418)
+ Updated Nov 28 17:57:06.169
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24017}
+12.12.12.5/32, version 10, internal 0x5000001 0x30 (ptr 0xe7ef5f8) [1], 0x600 (0xe0f0020), 0xa08 (0xef8a378)
+ Updated Nov 28 17:57:06.170
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24014}
+12.12.12.6/32, version 11, internal 0x5000001 0x30 (ptr 0xe7ef450) [1], 0x600 (0xe0f0068), 0xa08 (0xef8a288)
+ Updated Nov 28 17:57:06.171
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via 1.1.1.2/32, 3 dependencies, recursive [flags 0x6000]
+    path-idx 0 NHID 0x0 [0xe2cead0 0x0]
+    recursion-via-/32
+    next hop VRF - 'default', table - 0xe0000000
+    next hop 1.1.1.2/32 via 24001/0/21
+     next hop 10.0.0.6/32 Gi0/0/0/1    labels imposed {ImplNull 24015}
+224.0.0.0/4, version 0, external adjacency, internal 0x1040001 0xf0 (ptr 0xe7f15e8) [1], 0x400 (0xe0ef648), 0x0 (0x0)
+ Updated Nov 28 14:14:07.123
+ Prefix Len 4, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 7 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xddb0568 0x0]
+    next hop 0.0.0.0/32
+     external adjacency
+224.0.0.0/24, version 0, receive
+  Updated Nov 28 14:14:07.124
+  Prefix Len 24
+  internal 0x1004001 (ptr 0xe7f17f8) [1], 0x400 (0xe0ef600), 0x0 (0x0)
+, receive adjacency, internal 0x1004001 0xf0 (ptr 0xe7f17f8) [1], 0x400 (0xe0ef600), 0x0 (0x0)
+ Updated Nov 28 14:14:07.124
+ Prefix Len 24, traffic index 0, precedence n/a, priority 15
+   via 0.0.0.0/32, 25 dependencies, weight 0, class 0 [flags 0x0]
+    path-idx 0 NHID 0x0 [0xddb03a0 0x0]
+    next hop 0.0.0.0/32
+     receive adjacency
+255.255.255.255/32, version 0, broadcast
+  Updated Nov 28 14:14:07.123
+  Prefix Len 32
+RP/0/RP0/CPU0:xrv4#  
+RP/0/RP0/CPU0:xrv4#                    
+
+

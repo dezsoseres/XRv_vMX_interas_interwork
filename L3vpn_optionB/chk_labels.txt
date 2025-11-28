@@ -1,0 +1,559 @@
+RP/0/RP0/CPU0:xrv1#sh mpls forwarding 
+Fri Nov 28 18:51:21.243 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24000  Aggregate   A: Per-VRF Aggr[V] A                            16944       
+24001  Pop         20.0.0.1/32        Gi0/0/0/2    20.0.0.1        64051       
+       Pop         20.0.0.1/32        Gi0/0/0/2    20.0.0.1        15016       
+24002  Pop         1.1.1.2/32         Gi0/0/0/0    10.0.0.1        37868       
+24004  Pop         10.0.0.6/31        Gi0/0/0/0    10.0.0.1        0           
+24005  Pop         1.1.1.3/32         Gi0/0/0/1    10.0.0.5        34548       
+24006  Pop         10.0.0.2/31        Gi0/0/0/1    10.0.0.5        586         
+24007  24006       1.1.1.4/32         Gi0/0/0/0    10.0.0.1        1480        
+       24005       1.1.1.4/32         Gi0/0/0/1    10.0.0.5        2600        
+24008  24007       10.0.0.8/31        Gi0/0/0/0    10.0.0.1        0           
+       24006       10.0.0.8/31        Gi0/0/0/1    10.0.0.5        0           
+24009  24008       1.1.1.10/32        Gi0/0/0/0    10.0.0.1        28948       
+       24008       1.1.1.10/32        Gi0/0/0/1    10.0.0.5        0           
+24012  24007       11.11.11.3/32[V]                1.1.1.3         1560        
+24013  24006       11.11.11.4/32[V]                1.1.1.4         2600        
+24014  24005       11.11.11.2/32[V]                1.1.1.2         1560        
+RP/0/RP0/CPU0:xrv1# 
+
+RP/0/RP0/CPU0:xrv2#sh mpls forwarding 
+Fri Nov 28 18:51:42.513 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24000  Pop         20.0.0.3/32        Gi0/0/0/2    20.0.0.3        67494       
+       Pop         20.0.0.3/32        Gi0/0/0/2    20.0.0.3        26080       
+24001  Pop         1.1.1.1/32         Gi0/0/0/0    10.0.0.0        68096       
+24002  Pop         10.0.0.4/31        Gi0/0/0/0    10.0.0.0        536         
+24003  24005       1.1.1.3/32         Gi0/0/0/0    10.0.0.0        960         
+       24002       1.1.1.3/32         Gi0/0/0/1    10.0.0.7        4880        
+24004  Pop         10.0.0.2/31        Gi0/0/0/1    10.0.0.7        0           
+24005  Aggregate   A: Per-VRF Aggr[V] A                            14760       
+24006  Pop         1.1.1.4/32         Gi0/0/0/1    10.0.0.7        41270       
+24007  Pop         10.0.0.8/31        Gi0/0/0/1    10.0.0.7        558         
+24008  24007       1.1.1.10/32        Gi0/0/0/1    10.0.0.7        58572       
+24009  16          1.1.11.2:1:12.12.12.2/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+24010  24007       11.11.11.3/32[V]                1.1.1.3         1040        
+24011  16          1.1.11.1:1:12.12.12.1/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+24012  24006       11.11.11.4/32[V]                1.1.1.4         1560        
+24013  24000       11.11.11.1/32[V]                1.1.1.1         1560        
+24014  16          1.1.11.1:1:12.12.12.5/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+24015  16          1.1.11.1:1:12.12.12.6/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+24016  16          1.1.11.3:1:12.12.12.3/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+24017  16          1.1.11.4:1:12.12.12.4/32   \
+                                      Gi0/0/0/2    20.0.0.3        0           
+RP/0/RP0/CPU0:xrv2#  
+
+RP/0/RP0/CPU0:xrv3#sh mpls forwarding 
+Fri Nov 28 18:51:58.866 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24000  Pop         1.1.1.1/32         Gi0/0/0/1    10.0.0.4        35264       
+24001  24001       1.1.1.2/32         Gi0/0/0/0    10.0.0.3        2880        
+       24002       1.1.1.2/32         Gi0/0/0/1    10.0.0.4        3920        
+24003  Pop         10.0.0.0/31        Gi0/0/0/1    10.0.0.4        616         
+24004  Pop         10.0.0.6/31        Gi0/0/0/0    10.0.0.3        0           
+24005  Pop         1.1.1.4/32         Gi0/0/0/0    10.0.0.3        35344       
+24006  Pop         10.0.0.8/31        Gi0/0/0/0    10.0.0.3        526         
+24007  Aggregate   A: Per-VRF Aggr[V] A                            14760       
+24008  24007       1.1.1.10/32        Gi0/0/0/0    10.0.0.3        28428       
+RP/0/RP0/CPU0:xrv3#  
+
+
+RP/0/RP0/CPU0:xrv4#sh mpls forwarding 
+Fri Nov 28 18:52:24.668 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24000  24000       1.1.1.1/32         Gi0/0/0/0    10.0.0.2        2600        
+       24001       1.1.1.1/32         Gi0/0/0/1    10.0.0.6        30569       
+24001  Pop         1.1.1.2/32         Gi0/0/0/1    10.0.0.6        74577       
+24002  Pop         1.1.1.3/32         Gi0/0/0/0    10.0.0.2        67943       
+24004  Pop         10.0.0.0/31        Gi0/0/0/1    10.0.0.6        0           
+24005  Pop         10.0.0.4/31        Gi0/0/0/0    10.0.0.2        620         
+24006  Aggregate   A: Per-VRF Aggr[V] A                            19260       
+24007  Pop         1.1.1.10/32        Gi0/0/0/3    10.0.0.9        147782      
+
+
+root@vmx1> show route table inet.3 
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.2/32        *[LDP/9] 01:01:05, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0
+1.1.11.3/32        *[LDP/9] 00:59:02, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0
+1.1.11.4/32        *[LDP/9] 00:57:20, metric 1
+                       to 11.0.0.1 via ge-0/0/0.0, Push 299808
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 299808
+
+
+root@vmx2> show route table inet.3 
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 01:01:33, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0
+1.1.11.3/32        *[LDP/9] 00:56:41, metric 1
+                       to 11.0.0.0 via ge-0/0/0.0, Push 299792
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 299808
+1.1.11.4/32        *[LDP/9] 00:58:24, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0
+
+root@vmx3> show route table inet.3 
+
+inet.3: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 00:59:50, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0
+1.1.11.2/32        *[LDP/9] 00:57:00, metric 1
+                       to 11.0.0.3 via ge-0/0/0.0, Push 299776
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 299776
+1.1.11.4/32        *[LDP/9] 00:58:18, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0
+1.1.56.5/32        *[LDP/9] 00:58:14, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0
+1.1.56.6/32        *[LDP/9] 00:57:40, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 299792
+
+root@vmx4> show route table inet.3 
+
+inet.3: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 00:58:12, metric 1
+                       to 11.0.0.2 via ge-0/0/0.0, Push 299776
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 299776
+1.1.11.2/32        *[LDP/9] 00:58:47, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.3/32        *[LDP/9] 00:58:22, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0
+1.1.56.5/32        *[LDP/9] 00:57:43, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 299792
+1.1.56.6/32        *[LDP/9] 00:57:52, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0
+
+root@vmx5> show route table inet.3 
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[LDP/9] 00:58:21, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0
+                    [BGP/170] 00:58:20, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0
+1.1.11.4/32        *[LDP/9] 00:57:47, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+                    [BGP/170] 00:57:42, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+1.1.56.6/32        *[LDP/9] 00:57:47, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0
+
+root@vmx6> show route table inet.3 
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[LDP/9] 00:57:51, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+                    [BGP/170] 00:57:49, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+1.1.11.4/32        *[LDP/9] 00:57:59, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0
+                    [BGP/170] 00:57:58, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0
+1.1.56.5/32        *[LDP/9] 00:57:51, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0
+
+
+root@vmx1> show route table mpls.0 
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:04:16, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:04:16, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:04:16, metric 1
+                       Receive
+2                  *[MPLS/0] 01:04:16, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:04:16, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:04:16, metric 1
+                       Receive
+16                 *[VPN/0] 01:04:15
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:03:19, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0, Pop      
+299776(S=0)        *[LDP/9] 01:03:19, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0, Pop      
+299792             *[LDP/9] 01:01:16, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Pop      
+299792(S=0)        *[LDP/9] 01:01:16, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Pop      
+299808             *[LDP/9] 00:59:34, metric 1
+                       to 11.0.0.1 via ge-0/0/0.0, Swap 299808
+                    >  to 11.0.0.5 via ge-0/0/1.0, Swap 299808
+
+root@vmx2> show route table mpls.0    
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:03:55, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:03:55, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:03:55, metric 1
+                       Receive
+2                  *[MPLS/0] 01:03:55, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:03:55, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:03:55, metric 1
+                       Receive
+16                 *[VPN/0] 01:03:54
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:03:38, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0, Pop      
+299776(S=0)        *[LDP/9] 01:03:38, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0, Pop      
+299792             *[LDP/9] 00:58:46, metric 1
+                       to 11.0.0.0 via ge-0/0/0.0, Swap 299792
+                    >  to 11.0.0.7 via ge-0/0/1.0, Swap 299808
+299808             *[LDP/9] 01:00:29, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+299808(S=0)        *[LDP/9] 01:00:29, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+
+
+root@vmx3> show route table mpls.0    
+
+mpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:02:13, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:02:13, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:02:13, metric 1
+                       Receive
+2                  *[MPLS/0] 01:02:13, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:02:13, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:02:13, metric 1
+                       Receive
+16                 *[VPN/0] 01:02:13
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:01:55, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0, Pop      
+299776(S=0)        *[LDP/9] 01:01:55, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0, Pop      
+299792             *[LDP/9] 00:59:05, metric 1
+                       to 11.0.0.3 via ge-0/0/0.0, Swap 299776
+                    >  to 11.0.0.4 via ge-0/0/1.0, Swap 299776
+299808             *[LDP/9] 01:00:23, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0, Pop      
+299808(S=0)        *[LDP/9] 01:00:23, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0, Pop      
+299824             *[LDP/9] 01:00:19, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Pop      
+299824(S=0)        *[LDP/9] 01:00:19, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Pop      
+299840             *[LDP/9] 00:59:45, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Swap 299792
+
+root@vmx3> 
+
+root@vmx4> show route table mpls.0    
+
+mpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:01:17, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:01:17, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:01:17, metric 1
+                       Receive
+2                  *[MPLS/0] 01:01:17, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:01:17, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:01:17, metric 1
+                       Receive
+16                 *[VPN/0] 01:01:17
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:01:00, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+299776(S=0)        *[LDP/9] 01:01:00, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+299792             *[LDP/9] 01:00:25, metric 1
+                       to 11.0.0.2 via ge-0/0/0.0, Swap 299776
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 299776
+299808             *[LDP/9] 01:00:35, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0, Pop      
+299808(S=0)        *[LDP/9] 01:00:35, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0, Pop      
+299824             *[LDP/9] 01:00:05, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Pop      
+299824(S=0)        *[LDP/9] 01:00:05, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Pop      
+299840             *[LDP/9] 00:59:56, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Swap 299792
+
+root@vmx4> 
+
+
+root@vmx5> show route table mpls.0    
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:00:55, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:00:55, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:00:55, metric 1
+                       Receive
+2                  *[MPLS/0] 01:00:55, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:00:55, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:00:55, metric 1
+                       Receive
+16                 *[VPN/0] 01:00:55
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:00:45, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0, Pop      
+299776(S=0)        *[LDP/9] 01:00:45, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0, Pop      
+299792             *[LDP/9] 01:00:11, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Pop      
+299792(S=0)        *[LDP/9] 01:00:11, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Pop      
+299808             *[LDP/9] 01:00:11, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Swap 299776
+
+root@vmx5> 
+
+root@vmx6> show route table mpls.0    
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:00:44, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:00:44, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:00:44, metric 1
+                       Receive
+2                  *[MPLS/0] 01:00:44, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:00:44, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:00:44, metric 1
+                       Receive
+16                 *[VPN/0] 01:00:44
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:00:34, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0, Pop      
+299776(S=0)        *[LDP/9] 01:00:34, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0, Pop      
+299792             *[LDP/9] 01:00:26, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Pop      
+299792(S=0)        *[LDP/9] 01:00:26, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Pop      
+299808             *[LDP/9] 01:00:26, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Swap 299776
+
+root@vmx6> 
+
+root@vmx6> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          2          0          0          0          0
+inet.0               
+                       2          0          0          0          0          0
+inet6.0              
+                       0          0          0          0          0          0
+bgp.l3vpn.0          
+                      18         18          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.3                100        184        177       0       0     1:16:59 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 9/9/9/0
+  bgp.l2vpn.0: 0/0/0/0                  
+  A.inet.0: 8/9/9/0
+1.1.11.4                100        185        177       0       0     1:17:08 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 9/9/9/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/9/9/0
+
+root@vmx6> show route advertising-protocol bgp 1.1.11.3 
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 12.12.12.6/32           Self                         100        I
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  100:200:1/96                    
+*                         Self                         100        I
+
+root@vmx6> show route advertising-protocol bgp 1.1.11.4    
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 12.12.12.6/32           Self                         100        I
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  100:200:1/96                    
+*                         Self                         100        I
+
+root@vmx6> show route receive-protocol bgp 1.1.11.3        
+
+inet.0: 11 destinations, 14 routes (11 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.3/32             1.1.11.3                     100        I
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.3/32             1.1.11.3                     100        I
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 11.11.11.1/32           1.1.11.3             0       100        200 ?
+* 11.11.11.2/32           1.1.11.3             0       100        200 ?
+* 11.11.11.3/32           1.1.11.3             0       100        200 ?
+* 11.11.11.4/32           1.1.11.3             0       100        200 ?
+* 12.12.12.1/32           1.1.11.3                     100        I
+* 12.12.12.2/32           1.1.11.3                     100        I
+* 12.12.12.3/32           1.1.11.3                     100        I
+  12.12.12.4/32           1.1.11.3                     100        I
+* 12.12.12.5/32           1.1.11.3                     100        I
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 9 destinations, 18 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.1:1:12.12.12.1/32                    
+*                         1.1.11.3                     100        I
+  1.1.11.1:1:12.12.12.5/32                    
+*                         1.1.11.3                     100        I
+  1.1.11.2:1:12.12.12.2/32                    
+*                         1.1.11.3                     100        I
+  1.1.11.3:1:12.12.12.3/32                    
+*                         1.1.11.3                     100        I
+  1.1.11.4:1:12.12.12.4/32                    
+                          1.1.11.3                     100        I
+  200:1:11.11.11.1/32                    
+*                         1.1.11.3             0       100        200 ?
+  200:1:11.11.11.2/32                    
+*                         1.1.11.3             0       100        200 ?
+  200:1:11.11.11.3/32                    
+*                         1.1.11.3             0       100        200 ?
+  200:1:11.11.11.4/32                    
+*                         1.1.11.3             0       100        200 ?
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  0:0:0/0                     
+*                         1.1.11.3                     100        I
+
+root@vmx6> show route receive-protocol bgp 1.1.11.4    
+
+inet.0: 11 destinations, 14 routes (11 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  11.11.11.1/32           1.1.11.4             0       100        200 ?
+  11.11.11.2/32           1.1.11.4             0       100        200 ?
+  11.11.11.3/32           1.1.11.4             0       100        200 ?
+  11.11.11.4/32           1.1.11.4             0       100        200 ?
+  12.12.12.1/32           1.1.11.4                     100        I
+  12.12.12.2/32           1.1.11.4                     100        I
+  12.12.12.3/32           1.1.11.4                     100        I
+* 12.12.12.4/32           1.1.11.4                     100        I
+  12.12.12.5/32           1.1.11.4                     100        I
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 9 destinations, 18 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.1:1:12.12.12.1/32                    
+                          1.1.11.4                     100        I
+  1.1.11.1:1:12.12.12.5/32                    
+                          1.1.11.4                     100        I
+  1.1.11.2:1:12.12.12.2/32                    
+                          1.1.11.4                     100        I
+  1.1.11.3:1:12.12.12.3/32                    
+                          1.1.11.4                     100        I
+  1.1.11.4:1:12.12.12.4/32                    
+*                         1.1.11.4                     100        I
+  200:1:11.11.11.1/32                    
+                          1.1.11.4             0       100        200 ?
+  200:1:11.11.11.2/32                    
+                          1.1.11.4             0       100        200 ?
+  200:1:11.11.11.3/32                    
+                          1.1.11.4             0       100        200 ?
+  200:1:11.11.11.4/32                    
+                          1.1.11.4             0       100        200 ?
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  0:0:0/0                     
+                          1.1.11.4                     100        I
+
+root@vmx6> 
+
+
+
+
+

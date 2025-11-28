@@ -1,0 +1,125 @@
+root@vmx1> show version brief 
+Hostname: vmx1
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@vmx2> show version brief 
+Hostname: vmx2
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@vmx3> show version brief 
+Hostname: vmx3
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@vmx4> show version brief 
+Hostname: vmx4
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@vmx5> show version brief 
+Hostname: vmx5
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@vmx6> show version brief 
+Hostname: vmx6
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+root@rr2> show version brief 
+Hostname: rr2
+Model: vmx
+Junos: 23.2R1-S1.6
+JUNOS OS Kernel 64-bit  [20230808.f5177d2_builder_stable_12_232]
+...
+
+RP/0/RP0/CPU0:xrv1#sh ver
+Fri Nov 28 17:58:13.894 UTC
+Cisco IOS XR Software, Version 7.5.2
+Copyright (c) 2013-2022 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Tue Apr 26 18:04:31 PDT 2022
+ Built Host   : iox-ucs-061
+ Workspace    : /auto/srcarchive14/prod/7.5.2/xrv9k/ws
+ Version      : 7.5.2
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.5.2-0
+
+cisco IOS-XRv 9000 () processor
+System uptime is 3 hours 49 minutes
+
+RP/0/RP0/CPU0:xrv2#sh ver
+Fri Nov 28 17:57:44.264 UTC
+Cisco IOS XR Software, Version 7.5.2
+Copyright (c) 2013-2022 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Tue Apr 26 18:04:31 PDT 2022
+ Built Host   : iox-ucs-061
+ Workspace    : /auto/srcarchive14/prod/7.5.2/xrv9k/ws
+ Version      : 7.5.2
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.5.2-0
+
+cisco IOS-XRv 9000 () processor
+System uptime is 3 hours 48 minutes
+
+RP/0/RP0/CPU0:xrv3#sh ver
+Fri Nov 28 17:58:36.669 UTC
+Cisco IOS XR Software, Version 7.5.2
+Copyright (c) 2013-2022 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Tue Apr 26 18:04:31 PDT 2022
+ Built Host   : iox-ucs-061
+ Workspace    : /auto/srcarchive14/prod/7.5.2/xrv9k/ws
+ Version      : 7.5.2
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.5.2-0
+
+cisco IOS-XRv 9000 () processor
+System uptime is 3 hours 47 minutes
+
+RP/0/RP0/CPU0:xrv3# 
+
+RP/0/RP0/CPU0:xrv4#sh ver
+Fri Nov 28 17:58:55.685 UTC
+Cisco IOS XR Software, Version 7.5.2
+Copyright (c) 2013-2022 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Tue Apr 26 18:04:31 PDT 2022
+ Built Host   : iox-ucs-061
+ Workspace    : /auto/srcarchive14/prod/7.5.2/xrv9k/ws
+ Version      : 7.5.2
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.5.2-0
+
+cisco IOS-XRv 9000 () processor
+System uptime is 3 hours 49 minutes
+
+
+
+
+
+
+
+
+
+
+
+
+

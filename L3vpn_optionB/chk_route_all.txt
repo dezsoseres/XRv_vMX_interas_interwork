@@ -1,0 +1,1390 @@
+root@vmx1> show route 
+
+inet.0: 18 destinations, 18 routes (18 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[Direct/0] 01:24:41
+                    >  via lo0.0
+1.1.11.2/32        *[IS-IS/18] 01:23:34, metric 1000
+                    >  to 11.0.0.1 via ge-0/0/0.0
+1.1.11.3/32        *[IS-IS/18] 01:21:31, metric 1000
+                    >  to 11.0.0.5 via ge-0/0/1.0
+1.1.11.4/32        *[IS-IS/18] 01:19:59, metric 2000
+                       to 11.0.0.1 via ge-0/0/0.0
+                    >  to 11.0.0.5 via ge-0/0/1.0
+1.1.11.10/32       *[IS-IS/18] 01:18:51, metric 16779214
+                    >  to 11.0.0.1 via ge-0/0/0.0
+                       to 11.0.0.5 via ge-0/0/1.0
+11.0.0.0/31        *[Direct/0] 01:24:41
+                    >  via ge-0/0/0.0
+11.0.0.0/32        *[Local/0] 01:24:41
+                       Local via ge-0/0/0.0
+11.0.0.2/31        *[IS-IS/18] 01:21:31, metric 2000
+                    >  to 11.0.0.5 via ge-0/0/1.0
+11.0.0.4/31        *[Direct/0] 01:24:41
+                    >  via ge-0/0/1.0   
+11.0.0.4/32        *[Local/0] 01:24:41
+                       Local via ge-0/0/1.0
+11.0.0.6/31        *[IS-IS/18] 01:23:34, metric 2000
+                    >  to 11.0.0.1 via ge-0/0/0.0
+11.0.0.8/31        *[IS-IS/18] 01:19:59, metric 3000
+                    >  to 11.0.0.1 via ge-0/0/0.0
+                       to 11.0.0.5 via ge-0/0/1.0
+12.0.0.2/31        *[IS-IS/18] 01:21:31, metric 2000
+                    >  to 11.0.0.5 via ge-0/0/1.0
+12.0.0.4/31        *[IS-IS/18] 01:19:59, metric 3000
+                       to 11.0.0.1 via ge-0/0/0.0
+                    >  to 11.0.0.5 via ge-0/0/1.0
+20.0.0.0/31        *[Direct/0] 01:24:41
+                    >  via ge-0/0/2.0
+20.0.0.1/32        *[Local/0] 01:24:41
+                       Local via ge-0/0/2.0
+20.0.0.2/31        *[IS-IS/18] 01:23:34, metric 2000
+                    >  to 11.0.0.1 via ge-0/0/0.0
+224.0.0.2/32       *[LDP/9] 01:24:41, metric 1
+                       MultiRecv
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.2/32        *[LDP/9] 01:23:44, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0
+1.1.11.3/32        *[LDP/9] 01:21:41, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0
+1.1.11.4/32        *[LDP/9] 01:19:59, metric 1
+                       to 11.0.0.1 via ge-0/0/0.0, Push 299808
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 299808
+
+A.inet.0: 10 destinations, 14 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:24:29, MED 0, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24000
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+11.11.11.2/32      *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24014
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+11.11.11.3/32      *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24012
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+11.11.11.4/32      *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24013
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+12.12.12.1/32      *[Direct/0] 01:24:41
+                    >  via lo0.100
+12.12.12.2/32      *[BGP/170] 01:18:41, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+12.12.12.3/32      *[BGP/170] 01:18:45, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 16
+12.12.12.4/32      *[BGP/170] 01:18:45, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+12.12.12.5/32      *[BGP/170] 01:18:45, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+12.12.12.6/32      *[BGP/170] 01:18:45, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+49.0000.0010.0101.1001/72                
+                   *[Direct/0] 01:24:41
+                    >  via lo0.0
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:24:41, metric 1
+                       to table inet.0  
+0(S=0)             *[MPLS/0] 01:24:41, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:24:41, metric 1
+                       Receive
+2                  *[MPLS/0] 01:24:41, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:24:41, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:24:41, metric 1
+                       Receive
+16                 *[VPN/0] 01:24:40
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:23:44, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0, Pop      
+299776(S=0)        *[LDP/9] 01:23:44, metric 1
+                    >  to 11.0.0.1 via ge-0/0/0.0, Pop      
+299792             *[LDP/9] 01:21:41, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Pop      
+299792(S=0)        *[LDP/9] 01:21:41, metric 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Pop      
+299808             *[LDP/9] 01:19:59, metric 1
+                       to 11.0.0.1 via ge-0/0/0.0, Swap 299808
+                    >  to 11.0.0.5 via ge-0/0/1.0, Swap 299808
+
+bgp.l3vpn.0: 10 destinations, 14 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[Direct/0] 01:24:41
+                    >  via lo0.100
+1.1.11.1:1:12.12.12.5/32                
+                   *[BGP/170] 01:18:45, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                       to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+1.1.11.1:1:12.12.12.6/32                
+                   *[BGP/170] 01:18:45, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                       to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+1.1.11.2:1:12.12.12.2/32                
+                   *[BGP/170] 01:18:41, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+1.1.11.3:1:12.12.12.3/32                
+                   *[BGP/170] 01:18:45, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 16
+1.1.11.4:1:12.12.12.4/32                
+                   *[BGP/170] 01:18:45, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16, Push 299808(top)
+                       to 11.0.0.5 via ge-0/0/1.0, Push 16, Push 299808(top)
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:24:29, MED 0, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24000
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+200:1:11.11.11.2/32                
+                   *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24014
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+200:1:11.11.11.3/32                
+                   *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24012
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:24:29, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.0 via ge-0/0/2.0, Push 24013
+                    [BGP/170] 01:18:41, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.1 via ge-0/0/0.0, Push 16
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:42:24
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:24:41  
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[RTarget/5] 01:18:45
+                      Type Default
+                       Local
+100:200:1/96                
+                   *[RTarget/5] 01:24:41
+                      Type Default
+                       Local
+
+root@vmx1> 
+
+root@vmx2> show route 
+
+inet.0: 18 destinations, 18 routes (18 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[IS-IS/18] 01:24:01, metric 1000
+                    >  to 11.0.0.0 via ge-0/0/0.0
+1.1.11.2/32        *[Direct/0] 01:24:27
+                    >  via lo0.0
+1.1.11.3/32        *[IS-IS/18] 01:19:19, metric 2000
+                       to 11.0.0.0 via ge-0/0/0.0
+                    >  to 11.0.0.7 via ge-0/0/1.0
+1.1.11.4/32        *[IS-IS/18] 01:20:52, metric 1000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+1.1.11.10/32       *[IS-IS/18] 01:19:19, metric 16778214
+                    >  to 11.0.0.7 via ge-0/0/1.0
+11.0.0.0/31        *[Direct/0] 01:24:27
+                    >  via ge-0/0/0.0
+11.0.0.1/32        *[Local/0] 01:24:27
+                       Local via ge-0/0/0.0
+11.0.0.2/31        *[IS-IS/18] 01:20:52, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+11.0.0.4/31        *[IS-IS/18] 01:24:01, metric 2000
+                    >  to 11.0.0.0 via ge-0/0/0.0
+11.0.0.6/31        *[Direct/0] 01:24:27 
+                    >  via ge-0/0/1.0
+11.0.0.6/32        *[Local/0] 01:24:27
+                       Local via ge-0/0/1.0
+11.0.0.8/31        *[IS-IS/18] 01:20:52, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+12.0.0.2/31        *[IS-IS/18] 01:19:19, metric 3000
+                       to 11.0.0.0 via ge-0/0/0.0
+                    >  to 11.0.0.7 via ge-0/0/1.0
+12.0.0.4/31        *[IS-IS/18] 01:20:52, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+20.0.0.0/31        *[IS-IS/18] 01:24:01, metric 2000
+                    >  to 11.0.0.0 via ge-0/0/0.0
+20.0.0.2/31        *[Direct/0] 01:24:27
+                    >  via ge-0/0/2.0
+20.0.0.3/32        *[Local/0] 01:24:27
+                       Local via ge-0/0/2.0
+224.0.0.2/32       *[LDP/9] 01:24:27, metric 1
+                       MultiRecv
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 01:24:11, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0
+1.1.11.3/32        *[LDP/9] 01:19:19, metric 1
+                       to 11.0.0.0 via ge-0/0/0.0, Push 299792
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 299808
+1.1.11.4/32        *[LDP/9] 01:21:02, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0
+
+A.inet.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24013
+11.11.11.2/32      *[BGP/170] 01:24:15, MED 0, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24005
+11.11.11.3/32      *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24010
+11.11.11.4/32      *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24012
+12.12.12.1/32      *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.0 via ge-0/0/0.0, Push 16
+12.12.12.2/32      *[Direct/0] 01:24:27
+                    >  via lo0.100
+12.12.12.3/32      *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.0 via ge-0/0/0.0, Push 16, Push 299792(top)
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16, Push 299808(top)
+12.12.12.4/32      *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+12.12.12.5/32      *[BGP/170] 01:19:09, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+12.12.12.6/32      *[BGP/170] 01:19:09, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+49.0000.0010.0101.1002/72                
+                   *[Direct/0] 01:24:27 
+                    >  via lo0.0
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:24:28, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:24:28, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:24:28, metric 1
+                       Receive
+2                  *[MPLS/0] 01:24:28, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:24:28, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:24:28, metric 1
+                       Receive
+16                 *[VPN/0] 01:24:27
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:24:11, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0, Pop      
+299776(S=0)        *[LDP/9] 01:24:11, metric 1
+                    >  to 11.0.0.0 via ge-0/0/0.0, Pop      
+299792             *[LDP/9] 01:19:19, metric 1
+                       to 11.0.0.0 via ge-0/0/0.0, Swap 299792
+                    >  to 11.0.0.7 via ge-0/0/1.0, Swap 299808
+299808             *[LDP/9] 01:21:02, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+299808(S=0)        *[LDP/9] 01:21:02, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+
+bgp.l3vpn.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.0 via ge-0/0/0.0, Push 16
+1.1.11.1:1:12.12.12.5/32                
+                   *[BGP/170] 01:19:09, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+1.1.11.1:1:12.12.12.6/32                
+                   *[BGP/170] 01:19:09, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+1.1.11.2:1:12.12.12.2/32                
+                   *[Direct/0] 01:24:27
+                    >  via lo0.100
+1.1.11.3:1:12.12.12.3/32                
+                   *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.0 via ge-0/0/0.0, Push 16, Push 299792(top)
+                       to 11.0.0.7 via ge-0/0/1.0, Push 16, Push 299808(top)
+1.1.11.4:1:12.12.12.4/32                
+                   *[BGP/170] 01:19:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24013
+200:1:11.11.11.2/32                
+                   *[BGP/170] 01:24:15, MED 0, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24005
+200:1:11.11.11.3/32                
+                   *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24010
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:24:15, localpref 100
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24012
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:42:16
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:24:28
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[RTarget/5] 01:19:09
+                      Type Default
+                       Local
+100:200:1/96                
+                   *[RTarget/5] 01:24:28
+                      Type Default
+                       Local
+
+root@vmx2> 
+
+root@vmx3> show route  
+
+inet.0: 22 destinations, 25 routes (22 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[IS-IS/18] 01:22:25, metric 1000
+                    >  to 11.0.0.4 via ge-0/0/1.0
+1.1.11.2/32        *[IS-IS/18] 01:19:45, metric 2000
+                       to 11.0.0.3 via ge-0/0/0.0
+                    >  to 11.0.0.4 via ge-0/0/1.0
+1.1.11.3/32        *[Direct/0] 01:22:53
+                    >  via lo0.0
+                    [OSPF/19] 01:22:48, metric 0
+                    >  via lo0.0
+1.1.11.4/32        *[IS-IS/18] 01:21:03, metric 1000
+                    >  to 11.0.0.3 via ge-0/0/0.0
+                    [OSPF/19] 01:20:26, metric 3000
+                    >  to 12.0.0.3 via ge-0/0/3.0
+1.1.11.10/32       *[IS-IS/18] 01:19:45, metric 16778214
+                    >  to 11.0.0.3 via ge-0/0/0.0
+1.1.56.5/32        *[OSPF/19] 01:21:01, metric 1000
+                    >  to 12.0.0.3 via ge-0/0/3.0
+1.1.56.6/32        *[OSPF/19] 01:20:26, metric 2000
+                    >  to 12.0.0.3 via ge-0/0/3.0
+11.0.0.0/31        *[IS-IS/18] 01:22:25, metric 2000
+                    >  to 11.0.0.4 via ge-0/0/1.0
+11.0.0.2/31        *[Direct/0] 01:22:53
+                    >  via ge-0/0/0.0
+11.0.0.2/32        *[Local/0] 01:22:53
+                       Local via ge-0/0/0.0
+11.0.0.4/31        *[Direct/0] 01:22:53
+                    >  via ge-0/0/1.0
+11.0.0.5/32        *[Local/0] 01:22:53
+                       Local via ge-0/0/1.0
+11.0.0.6/31        *[IS-IS/18] 01:21:03, metric 2000
+                    >  to 11.0.0.3 via ge-0/0/0.0
+11.0.0.8/31        *[IS-IS/18] 01:21:03, metric 2000
+                    >  to 11.0.0.3 via ge-0/0/0.0
+12.0.0.0/31        *[OSPF/19] 01:21:01, metric 2000
+                    >  to 12.0.0.3 via ge-0/0/3.0
+12.0.0.2/31        *[Direct/0] 01:22:53
+                    >  via ge-0/0/3.0
+12.0.0.2/32        *[Local/0] 01:22:53
+                       Local via ge-0/0/3.0
+12.0.0.4/31        *[IS-IS/18] 01:21:03, metric 2000
+                    >  to 11.0.0.3 via ge-0/0/0.0
+                    [OSPF/19] 01:20:26, metric 3000
+                    >  to 12.0.0.3 via ge-0/0/3.0
+20.0.0.0/31        *[IS-IS/18] 01:22:25, metric 2000
+                    >  to 11.0.0.4 via ge-0/0/1.0
+20.0.0.2/31        *[IS-IS/18] 01:19:45, metric 3000
+                    >  to 11.0.0.3 via ge-0/0/0.0
+                       to 11.0.0.4 via ge-0/0/1.0
+224.0.0.2/32       *[LDP/9] 01:22:53, metric 1
+                       MultiRecv
+224.0.0.5/32       *[OSPF/10] 01:22:53, metric 1
+                       MultiRecv
+
+inet.3: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 01:22:35, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0
+1.1.11.2/32        *[LDP/9] 01:19:45, metric 1
+                       to 11.0.0.3 via ge-0/0/0.0, Push 299776
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 299776
+1.1.11.4/32        *[LDP/9] 01:21:03, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0
+1.1.56.5/32        *[LDP/9] 01:20:59, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0
+1.1.56.6/32        *[LDP/9] 01:20:25, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 299792
+
+A.inet.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                       to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+11.11.11.2/32      *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                       to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+11.11.11.3/32      *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                       to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+11.11.11.4/32      *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                       to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+12.12.12.1/32      *[BGP/170] 01:19:39, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16
+12.12.12.2/32      *[BGP/170] 01:19:35, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+12.12.12.3/32      *[Direct/0] 01:22:53
+                    >  via lo0.100
+12.12.12.4/32      *[BGP/170] 01:19:43, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16
+12.12.12.5/32      *[BGP/170] 01:20:58, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 16
+12.12.12.6/32      *[BGP/170] 01:20:23, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 16, Push 299792(top)
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+49.0000.0010.0101.1003/72                
+                   *[Direct/0] 01:22:53
+                    >  via lo0.0        
+
+mpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:22:53, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:22:53, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:22:53, metric 1
+                       Receive
+2                  *[MPLS/0] 01:22:53, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:22:53, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:22:53, metric 1
+                       Receive
+16                 *[VPN/0] 01:22:53
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:22:35, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0, Pop      
+299776(S=0)        *[LDP/9] 01:22:35, metric 1
+                    >  to 11.0.0.4 via ge-0/0/1.0, Pop      
+299792             *[LDP/9] 01:19:45, metric 1
+                       to 11.0.0.3 via ge-0/0/0.0, Swap 299776
+                    >  to 11.0.0.4 via ge-0/0/1.0, Swap 299776
+299808             *[LDP/9] 01:21:03, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0, Pop      
+299808(S=0)        *[LDP/9] 01:21:03, metric 1
+                    >  to 11.0.0.3 via ge-0/0/0.0, Pop      
+299824             *[LDP/9] 01:20:59, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Pop      
+299824(S=0)        *[LDP/9] 01:20:59, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Pop      
+299840             *[LDP/9] 01:20:25, metric 1
+                    >  to 12.0.0.3 via ge-0/0/3.0, Swap 299792
+
+bgp.l3vpn.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[BGP/170] 01:19:39, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.4 via ge-0/0/1.0, Push 16
+1.1.11.1:1:12.12.12.5/32                
+                   *[BGP/170] 01:20:58, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 16
+1.1.11.1:1:12.12.12.6/32                
+                   *[BGP/170] 01:20:23, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 16, Push 299792(top)
+1.1.11.2:1:12.12.12.2/32                
+                   *[BGP/170] 01:19:35, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+1.1.11.3:1:12.12.12.3/32                
+                   *[Direct/0] 01:22:53
+                    >  via lo0.100
+1.1.11.4:1:12.12.12.4/32                
+                   *[BGP/170] 01:19:43, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+200:1:11.11.11.2/32                     
+                   *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+200:1:11.11.11.3/32                
+                   *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:19:35, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.3 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.4 via ge-0/0/1.0, Push 16, Push 299776(top)
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:42:04
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:22:53
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 4 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[RTarget/5] 01:20:59
+                      Type Default
+                       Local
+100:200:1/96                
+                   *[RTarget/5] 01:22:53
+                      Type Default
+                       Local
+                    [BGP/170] 01:20:58, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0
+                    [BGP/170] 01:20:23, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.3 via ge-0/0/3.0, Push 299792
+
+root@vmx3> 
+
+root@vmx4> show route 
+
+inet.0: 23 destinations, 26 routes (23 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[IS-IS/18] 01:21:13, metric 2000
+                       to 11.0.0.2 via ge-0/0/0.0
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.2/32        *[IS-IS/18] 01:21:38, metric 1000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.3/32        *[IS-IS/18] 01:21:23, metric 1000
+                    >  to 11.0.0.2 via ge-0/0/0.0
+                    [OSPF/19] 01:20:44, metric 3000
+                    >  to 12.0.0.5 via ge-0/0/3.0
+1.1.11.4/32        *[Direct/0] 01:22:05
+                    >  via lo0.0
+                    [OSPF/19] 01:22:00, metric 0
+                    >  via lo0.0
+1.1.11.10/32       *[IS-IS/18] 01:20:15, metric 16777214
+                    >  to 11.0.0.9 via ge-0/0/4.0
+1.1.56.5/32        *[OSPF/19] 01:20:44, metric 2000
+                    >  to 12.0.0.5 via ge-0/0/3.0
+1.1.56.6/32        *[OSPF/19] 01:20:54, metric 1000
+                    >  to 12.0.0.5 via ge-0/0/3.0
+11.0.0.0/31        *[IS-IS/18] 01:21:38, metric 2000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+11.0.0.2/31        *[Direct/0] 01:22:05
+                    >  via ge-0/0/0.0
+11.0.0.3/32        *[Local/0] 01:22:05
+                       Local via ge-0/0/0.0
+11.0.0.4/31        *[IS-IS/18] 01:21:23, metric 2000
+                    >  to 11.0.0.2 via ge-0/0/0.0
+11.0.0.6/31        *[Direct/0] 01:22:05
+                    >  via ge-0/0/1.0
+11.0.0.7/32        *[Local/0] 01:22:05
+                       Local via ge-0/0/1.0
+11.0.0.8/31        *[Direct/0] 01:22:05
+                    >  via ge-0/0/4.0
+11.0.0.8/32        *[Local/0] 01:22:05
+                       Local via ge-0/0/4.0
+12.0.0.0/31        *[OSPF/19] 01:20:54, metric 2000
+                    >  to 12.0.0.5 via ge-0/0/3.0
+12.0.0.2/31        *[IS-IS/18] 01:21:23, metric 2000
+                    >  to 11.0.0.2 via ge-0/0/0.0
+                    [OSPF/19] 01:20:44, metric 3000
+                    >  to 12.0.0.5 via ge-0/0/3.0
+12.0.0.4/31        *[Direct/0] 01:22:05
+                    >  via ge-0/0/3.0   
+12.0.0.4/32        *[Local/0] 01:22:05
+                       Local via ge-0/0/3.0
+20.0.0.0/31        *[IS-IS/18] 01:21:13, metric 3000
+                    >  to 11.0.0.2 via ge-0/0/0.0
+                       to 11.0.0.6 via ge-0/0/1.0
+20.0.0.2/31        *[IS-IS/18] 01:21:38, metric 2000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+224.0.0.2/32       *[LDP/9] 01:22:05, metric 1
+                       MultiRecv
+224.0.0.5/32       *[OSPF/10] 01:22:05, metric 1
+                       MultiRecv
+
+inet.3: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1/32        *[LDP/9] 01:21:13, metric 1
+                       to 11.0.0.2 via ge-0/0/0.0, Push 299776
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 299776
+1.1.11.2/32        *[LDP/9] 01:21:48, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.3/32        *[LDP/9] 01:21:23, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0
+1.1.56.5/32        *[LDP/9] 01:20:44, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 299792
+1.1.56.6/32        *[LDP/9] 01:20:53, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0
+
+A.inet.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+11.11.11.2/32      *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+11.11.11.3/32      *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+11.11.11.4/32      *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+12.12.12.1/32      *[BGP/170] 01:19:58, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                       to 11.0.0.2 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16, Push 299776(top)
+12.12.12.2/32      *[BGP/170] 01:19:54, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+12.12.12.3/32      *[BGP/170] 01:20:02, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.2 via ge-0/0/0.0, Push 16
+12.12.12.4/32      *[Direct/0] 01:22:05
+                    >  via lo0.100
+12.12.12.5/32      *[BGP/170] 01:20:40, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 16, Push 299792(top)
+12.12.12.6/32      *[BGP/170] 01:20:52, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 16
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+49.0000.0010.0101.1004/72                
+                   *[Direct/0] 01:22:05
+                    >  via lo0.0
+
+mpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:22:05, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:22:05, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:22:05, metric 1
+                       Receive
+2                  *[MPLS/0] 01:22:05, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:22:05, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:22:05, metric 1
+                       Receive
+16                 *[VPN/0] 01:22:05
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:21:48, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+299776(S=0)        *[LDP/9] 01:21:48, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+299792             *[LDP/9] 01:21:13, metric 1
+                       to 11.0.0.2 via ge-0/0/0.0, Swap 299776
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 299776
+299808             *[LDP/9] 01:21:23, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0, Pop      
+299808(S=0)        *[LDP/9] 01:21:23, metric 1
+                    >  to 11.0.0.2 via ge-0/0/0.0, Pop      
+299824             *[LDP/9] 01:20:53, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Pop      
+299824(S=0)        *[LDP/9] 01:20:53, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Pop      
+299840             *[LDP/9] 01:20:44, metric 1
+                    >  to 12.0.0.5 via ge-0/0/3.0, Swap 299792
+
+bgp.l3vpn.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[BGP/170] 01:19:58, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.2 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 11.0.0.6 via ge-0/0/1.0, Push 16, Push 299776(top)
+1.1.11.1:1:12.12.12.5/32                
+                   *[BGP/170] 01:20:40, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 16, Push 299792(top)
+1.1.11.1:1:12.12.12.6/32                
+                   *[BGP/170] 01:20:52, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 16
+1.1.11.2:1:12.12.12.2/32                
+                   *[BGP/170] 01:19:54, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+1.1.11.3:1:12.12.12.3/32                
+                   *[BGP/170] 01:20:02, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.2 via ge-0/0/0.0, Push 16
+1.1.11.4:1:12.12.12.4/32                
+                   *[Direct/0] 01:22:05
+                    >  via lo0.100
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+200:1:11.11.11.2/32                
+                   *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+200:1:11.11.11.3/32                
+                   *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:19:54, MED 0, localpref 100, from 1.1.11.10
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:42:17
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:22:05
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 4 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[RTarget/5] 01:20:52
+                      Type Default
+                       Local
+100:200:1/96                
+                   *[RTarget/5] 01:22:05
+                      Type Default
+                       Local
+                    [BGP/170] 01:20:40, localpref 100, from 1.1.56.5
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 299792
+                    [BGP/170] 01:20:52, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0
+
+root@vmx4> 
+
+root@vmx5> show route  
+
+inet.0: 11 destinations, 14 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[OSPF/10] 01:21:36, metric 1000
+                    >  to 12.0.0.2 via ge-0/0/3.0
+                    [BGP/170] 01:21:35, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0
+1.1.11.4/32        *[OSPF/10] 01:21:05, metric 2000
+                    >  to 12.0.0.1 via ge-0/0/0.0
+                    [BGP/170] 01:20:57, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+1.1.56.5/32        *[Direct/0] 01:21:46
+                    >  via lo0.0
+                    [OSPF/10] 01:21:41, metric 0
+                    >  via lo0.0
+1.1.56.6/32        *[OSPF/10] 01:21:05, metric 1000
+                    >  to 12.0.0.1 via ge-0/0/0.0
+12.0.0.0/31        *[Direct/0] 01:21:46
+                    >  via ge-0/0/0.0
+12.0.0.0/32        *[Local/0] 01:21:46
+                       Local via ge-0/0/0.0
+12.0.0.2/31        *[Direct/0] 01:21:46
+                    >  via ge-0/0/3.0
+12.0.0.3/32        *[Local/0] 01:21:46
+                       Local via ge-0/0/3.0
+12.0.0.4/31        *[OSPF/10] 01:21:05, metric 2000
+                    >  to 12.0.0.1 via ge-0/0/0.0
+224.0.0.2/32       *[LDP/9] 01:21:46, metric 1
+                       MultiRecv
+224.0.0.5/32       *[OSPF/10] 01:21:46, metric 1
+                       MultiRecv
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[LDP/9] 01:21:36, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0
+                    [BGP/170] 01:21:35, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0
+1.1.11.4/32        *[LDP/9] 01:21:02, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+                    [BGP/170] 01:20:57, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+1.1.56.6/32        *[LDP/9] 01:21:02, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+11.11.11.2/32      *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+11.11.11.3/32      *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+11.11.11.4/32      *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+12.12.12.1/32      *[BGP/170] 01:20:15, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:15, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+12.12.12.2/32      *[BGP/170] 01:20:11, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+12.12.12.3/32      *[BGP/170] 01:20:20, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+12.12.12.4/32      *[BGP/170] 01:20:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:20, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+12.12.12.5/32      *[Direct/0] 01:21:46
+                    >  via lo0.100
+12.12.12.6/32      *[BGP/170] 01:20:57, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:57, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:21:46, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:21:46, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:21:46, metric 1
+                       Receive
+2                  *[MPLS/0] 01:21:46, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:21:46, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:21:46, metric 1
+                       Receive
+16                 *[VPN/0] 01:21:46
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:21:36, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0, Pop      
+299776(S=0)        *[LDP/9] 01:21:36, metric 1
+                    >  to 12.0.0.2 via ge-0/0/3.0, Pop      
+299792             *[LDP/9] 01:21:02, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Pop      
+299792(S=0)        *[LDP/9] 01:21:02, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Pop      
+299808             *[LDP/9] 01:21:02, metric 1
+                    >  to 12.0.0.1 via ge-0/0/0.0, Swap 299776
+
+bgp.l3vpn.0: 9 destinations, 18 routes (9 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[BGP/170] 01:20:15, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:15, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+1.1.11.1:1:12.12.12.6/32                
+                   *[BGP/170] 01:20:57, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:57, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+1.1.11.2:1:12.12.12.2/32                
+                   *[BGP/170] 01:20:11, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+1.1.11.3:1:12.12.12.3/32                
+                   *[BGP/170] 01:20:20, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+1.1.11.4:1:12.12.12.4/32                
+                   *[BGP/170] 01:20:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:20, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+200:1:11.11.11.2/32                
+                   *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+200:1:11.11.11.3/32                     
+                   *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0, Push 16
+                       to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+                    [BGP/170] 01:20:11, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 16, Push 299776(top)
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:29:25
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:21:46
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[BGP/170] 01:20:57, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.2 via ge-0/0/3.0
+                       to 12.0.0.1 via ge-0/0/0.0, Push 299776
+                    [BGP/170] 01:20:57, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.1 via ge-0/0/0.0, Push 299776
+100:200:1/96                
+                   *[RTarget/5] 01:21:46
+                      Type Default
+                       Local
+
+root@vmx5> 
+
+root@vmx6> show route 
+
+inet.0: 11 destinations, 14 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[OSPF/10] 01:21:28, metric 2000
+                    >  to 12.0.0.0 via ge-0/0/0.0
+                    [BGP/170] 01:21:23, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+1.1.11.4/32        *[OSPF/10] 01:21:33, metric 1000
+                    >  to 12.0.0.4 via ge-0/0/3.0
+                    [BGP/170] 01:21:32, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0
+1.1.56.5/32        *[OSPF/10] 01:21:28, metric 1000
+                    >  to 12.0.0.0 via ge-0/0/0.0
+1.1.56.6/32        *[Direct/0] 01:21:43
+                    >  via lo0.0
+                    [OSPF/10] 01:21:38, metric 0
+                    >  via lo0.0
+12.0.0.0/31        *[Direct/0] 01:21:43
+                    >  via ge-0/0/0.0
+12.0.0.1/32        *[Local/0] 01:21:43
+                       Local via ge-0/0/0.0
+12.0.0.2/31        *[OSPF/10] 01:21:28, metric 2000
+                    >  to 12.0.0.0 via ge-0/0/0.0
+12.0.0.4/31        *[Direct/0] 01:21:43
+                    >  via ge-0/0/3.0
+12.0.0.5/32        *[Local/0] 01:21:43
+                       Local via ge-0/0/3.0
+224.0.0.2/32       *[LDP/9] 01:21:43, metric 1
+                       MultiRecv
+224.0.0.5/32       *[OSPF/10] 01:21:44, metric 1
+                       MultiRecv
+
+inet.3: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.3/32        *[LDP/9] 01:21:25, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+                    [BGP/170] 01:21:23, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+1.1.11.4/32        *[LDP/9] 01:21:33, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0
+                    [BGP/170] 01:21:32, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0
+1.1.56.5/32        *[LDP/9] 01:21:25, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0
+
+A.inet.0: 10 destinations, 19 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.1/32      *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+11.11.11.2/32      *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+11.11.11.3/32      *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+11.11.11.4/32      *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.1/32      *[BGP/170] 01:20:38, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:38, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.2/32      *[BGP/170] 01:20:34, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.3/32      *[BGP/170] 01:20:42, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:42, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.4/32      *[BGP/170] 01:20:42, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:42, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+12.12.12.5/32      *[BGP/170] 01:21:19, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:21:19, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.6/32      *[Direct/0] 01:21:43
+                    >  via lo0.100
+
+mpls.0: 12 destinations, 12 routes (12 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:21:43, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:21:43, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:21:43, metric 1
+                       Receive
+2                  *[MPLS/0] 01:21:43, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:21:43, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:21:43, metric 1
+                       Receive
+16                 *[VPN/0] 01:21:43
+                    >  via lsi.0 (A), Pop      
+299776             *[LDP/9] 01:21:33, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0, Pop      
+299776(S=0)        *[LDP/9] 01:21:33, metric 1
+                    >  to 12.0.0.4 via ge-0/0/3.0, Pop      
+299792             *[LDP/9] 01:21:25, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Pop      
+299792(S=0)        *[LDP/9] 01:21:25, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Pop      
+299808             *[LDP/9] 01:21:25, metric 1
+                    >  to 12.0.0.0 via ge-0/0/0.0, Swap 299776
+
+bgp.l3vpn.0: 9 destinations, 18 routes (9 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.1:1:12.12.12.1/32                
+                   *[BGP/170] 01:20:38, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:38, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+1.1.11.1:1:12.12.12.5/32                
+                   *[BGP/170] 01:21:19, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:21:19, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+1.1.11.2:1:12.12.12.2/32                
+                   *[BGP/170] 01:20:34, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+1.1.11.3:1:12.12.12.3/32                
+                   *[BGP/170] 01:20:42, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:42, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+1.1.11.4:1:12.12.12.4/32                
+                   *[BGP/170] 01:20:42, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:42, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+200:1:11.11.11.1/32                
+                   *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+200:1:11.11.11.2/32                
+                   *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+200:1:11.11.11.3/32                     
+                   *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+200:1:11.11.11.4/32                
+                   *[BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.3
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 16, Push 299776(top)
+                       to 12.0.0.4 via ge-0/0/3.0, Push 16
+                    [BGP/170] 01:20:34, MED 0, localpref 100, from 1.1.11.4
+                      AS path: 200 ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:29:53
+                       MultiRecv
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+ff02::2/128        *[INET6/0] 01:21:43
+                       MultiRecv
+
+bgp.rtarget.0: 2 destinations, 3 routes (2 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0:0:0/0                 
+                   *[BGP/170] 01:21:23, localpref 100, from 1.1.11.3
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.0 via ge-0/0/0.0, Push 299776
+                       to 12.0.0.4 via ge-0/0/3.0
+                    [BGP/170] 01:21:32, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0
+100:200:1/96                
+                   *[RTarget/5] 01:21:43
+                      Type Default
+                       Local
+
+root@vmx6> 
+
