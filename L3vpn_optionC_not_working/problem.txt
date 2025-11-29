@@ -1,0 +1,132 @@
+easier to see when only xr1-2 and vmx1-2 running
+
+root@vmx1> show route advertising-protocol bgp 20.0.0.0    
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 1.1.11.2/32             Self                 1                  I
+
+root@vmx1> show route receive-protocol bgp 20.0.0.0        
+
+inet.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 1.1.1.1/32              20.0.0.0             0                  200 ?
+* 1.1.1.2/32              20.0.0.0             2                  200 ?
+
+inet.3: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 1.1.1.1/32              20.0.0.0             0                  200 ?
+* 1.1.1.2/32              20.0.0.0             2                  200 ?
+
+RP/0/RP0/CPU0:xrv1#  RP/0/RP0/CPU0:Nov 29 12:36:42.927 UTC: bgp[1078]: %ROUTING-BGP-3-MALFORM_UPDATE : 
+Malformed UPDATE message received from neighbor 20.0.0.1 (VRF: default) - message length 75 bytes, error flags 0x00000040, 
+action taken "TreatAsWdr". Error details: "Error 0x00000040, Field "Attr-length", Attribute 28 (Flags 0xc0, Length 8), Data [c01c08]". 
+NLRIs: [IPv4 Labeled-unicast] 1.1.11.2/32 
+
+so juniper advertised prefix is not accepted on XR side
+
+RP/0/RP0/CPU0:xrv1#sh bgp ipv4 labeled-unicast summary 
+Sat Nov 29 14:54:10.935 UTC
+BGP router identifier 1.1.1.1, local AS number 200
+BGP generic scan interval 60 secs
+Non-stop routing is enabled
+BGP table state: Active
+Table ID: 0xe0000000   RD version: 10
+BGP main routing table version 10
+BGP NSR Initial initsync version 7 (Reached)
+BGP NSR/ISSU Sync-Group versions 0/0
+BGP scan interval 60 secs
+
+BGP is operating in STANDALONE mode.
+
+
+Process       RcvTblVer   bRIB/RIB   LabelVer  ImportVer  SendTblVer  StandbyVer
+Speaker              10         10         10         10          10           0
+
+Neighbor        Spk    AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down  St/PfxRcd
+20.0.0.1          0   100     432     412       10    0    0 00:30:28          0
+
+RP/0/RP0/CPU0:xrv1#
+
+in detail
+
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: %ROUTING-BGP-5-ADJCHANGE : neighbor 20.0.0.1 Up (VRF: default) (AS: 100) 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: !!!!!!!!!!!!!:: ERROR_HANDLING<<20.0.0.1>> :: errfl=0x00000040, attrfl=0xc0, attrcode=28, attrlen=8:: errhenabled=1, action=4:: MSG=0x7f846c000ca0 (fl=0x00000040, finalaction=4, elemcount=1):: msglindex=2, msgcount=18
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: UPDATE from 20.0.0.1 contains nh 20.0.0.1/32, gw_afi 0, flags 0x20008, nlri_afi 2
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: NH-Validate-Create: addr=20.0.0.1/32, len=4, nlriafi=2, nbr=20.0.0.1, gwafi=0, gwlen=4, gwaddrlen=32::: nhout=0x0x7f84e03f3674, validity=1, attrwdrflags=0x00000000
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: --bgp4_rcv_attributes--: END: nbr=20.0.0.1:: msg=0x0x7f84eb0bac20/75, updlen=56, attrbl=0x0x7f84eb0bac37/52, ipv4reachlen=0, msginpath=0x0x7f84acb7b8d0, asloopcheck=1, attrwdrfl=0x00000000:: samecluster=0, local_as_prepended=0, attr_wdr_flags 0x00000000, myascount=0:: rcvdata=0x0x7f84eb0bac6b/0, errptr=0x0x7f84eb0bac56/21
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu): Received unreachables from 20.0.0.1: attrcode=14, attrwdrflags=0x00000000
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu): UPDATE from 20.0.0.1 with attributes:
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu): nexthop 20.0.0.1/32, origin i, metric 1, path 100
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu): UPDATE from 20.0.0.1, prefix 1.1.11.2/32 (path ID: none) DENIED due to: 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu):  malformed update 'treat-as-withdraw';
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: !!-!-#-!-#-!!:: Received Malformed UPDATE from nbr 20.0.0.1:: msglen=75, errflags=0x00000040, finalaction=TreatAsWdr:: elemcount=1, lastelem={"Error 0x00000040, Field "Attr-length", Attribute 28 (Flags 0xc0, Length 8), Data [c01c08]"}:: ERRCTX={{msglindex=2, malformcount=18, memfailcount=0}}
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: Received UPDATE from 20.0.0.1 (length incl. header = 75)
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: Receive message dump for 20.0.0.1:
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: ffff ffff ffff ffff ffff ffff ffff ffff 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: 004b 0200 0000 3440 0101 0040 0206 0201 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: 0000 0064 8004 0400 0000 01c0 1c08 0001 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: 0404 1400 0001 900e 0011 0001 0404 1400 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: 0001 0038 0001 4101 010b 02 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr] (ip4lu): IPv4 Labeled-unicast EoR received for neighbor 20.0.0.1
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: --bgp4_rcv_attributes--: END: nbr=20.0.0.1:: msg=0x0x7f84eb0badc0/30, updlen=11, attrbl=0x0x7f84eb0badd7/7, ipv4reachlen=0, msginpath=0x0x7f84acb7b8d0, asloopcheck=1, attrwdrfl=0x00000000:: samecluster=0, local_as_prepended=0, attr_wdr_flags 0x00000000, myascount=0:: rcvdata=0x0x7f84eb0badde/0, errptr=0x0x7f84eb0badd7/7
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: Received UPDATE from 20.0.0.1 (length incl. header = 30)
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: Receive message dump for 20.0.0.1:
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: ffff ffff ffff ffff ffff ffff ffff ffff 
+RP/0/RP0/CPU0:Nov 29 14:23:42.979 UTC: bgp[1078]: [default-rtr]: 001e 0200 0000 0790 0f00 0300 0104  
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4u): Added reference to table TBL:default (1/1) refcount 7
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd]: Allocating filter-group 0.3in TBL:default (1/1)
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4u): Added reference to table TBL:default (1/1) refcount 8
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4lu): Adding neighbor 20.0.0.1 to new filter-group 0.3 in IPv4 Labeled-unicast sub-group 0.1 rtset size 0 in updgrp 0.2
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4lu): Added neighbor 20.0.0.1 to update filter-group 0.3 in IPv4 Labeled-unicast sub-group 0.1
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4lu): Added neighbor 20.0.0.1 to update sub-group 0.1 in IPv4 Labeled-unicast update-group 0.2
+RP/0/RP0/CPU0:Nov 29 14:23:42.980 UTC: bgp[1078]: [default-upd] (ip4lu): Started updgrp timer for updgrp 0.2:: delay=0.010, delaytype=0
+
+
+cisco XR:
+router bgp 200
+ bgp router-id 1.1.1.1
+ mpls activate
+  interface GigabitEthernet0/0/0/2
+ !
+ address-family ipv4 unicast
+  redistribute ospf 200 route-policy L0-AS200
+  allocate-label all
+ !
+ address-family vpnv4 unicast
+  retain route-target all
+ !
+ neighbor 20.0.0.1
+  remote-as 100
+  update-source GigabitEthernet0/0/0/2
+  address-family ipv4 labeled-unicast
+   route-policy ACCEPT-ALL in
+   route-policy ACCEPT-ALL out
+   soft-reconfiguration inbound
+  !       
+  address-family vpnv4 unicast
+   route-policy ACCEPT-ALL in
+   route-policy ACCEPT-ALL out
+   soft-reconfiguration inbound
+  !
+
+juniper:
+even when adding rib group it is not ok
+
+set policy-options policy-statement L0-AS100 term L0-AS100 from rib inet.3
+set policy-options policy-statement L0-AS100 term L0-AS100 from route-filter 1.1.11.0/24 prefix-length-range /32-/32
+set policy-options policy-statement L0-AS100 term L0-AS100 then accept
+
+set protocols bgp group AS200 type external
+set protocols bgp group AS200 local-address 20.0.0.1
+set protocols bgp group AS200 family inet labeled-unicast rib-group RG-LOOPBACKs-TO-INET0_3
+set protocols bgp group AS200 family inet labeled-unicast rib inet.3
+set protocols bgp group AS200 family inet-vpn unicast
+set protocols bgp group AS200 family l2vpn signaling
+set protocols bgp group AS200 export L0-AS100
+set protocols bgp group AS200 neighbor 20.0.0.0 description xrv1
+set protocols bgp group AS200 neighbor 20.0.0.0 peer-as 200
+
+
+
+

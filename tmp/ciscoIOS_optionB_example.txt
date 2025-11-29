@@ -1,0 +1,101 @@
+!
+version 12.2
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+ip subnet-zero
+ip cef
+!
+!
+no ip domain-lookup
+!
+no mpls traffic-eng auto-bw timers frequency 0
+mpls ldp router-id Loopback0 force
+call rsvp-sync
+!         
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.2 255.255.255.255
+ no clns route-cache
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex half
+ no clns route-cache
+!
+interface Serial2/0
+ ip address 10.1.2.2 255.255.255.252
+ encapsulation frame-relay
+ mpls ip
+ serial restart-delay 0
+ frame-relay map ip 10.1.2.1 201 broadcast
+ no frame-relay inverse-arp
+ no clns route-cache
+!
+interface FastEthernet3/0
+ ip address 10.2.4.1 255.255.255.252
+ duplex full
+ mpls bgp forwarding
+ no clns route-cache
+!
+router ospf 100
+ router-id 1.1.1.2
+ log-adjacency-changes
+ network 1.1.1.2 0.0.0.0 area 0
+ network 10.1.2.0 0.0.0.3 area 0
+ neighbor 10.1.2.1 priority 1
+!
+router bgp 100
+ bgp router-id 1.1.1.2
+ no bgp default ipv4-unicast
+ no bgp default route-target filter
+ bgp log-neighbor-changes
+ neighbor 1.1.1.3 remote-as 100
+ neighbor 1.1.1.3 update-source Loopback0
+ neighbor 1.1.1.4 remote-as 200
+ neighbor 1.1.1.4 update-source Loopback0
+ neighbor 1.1.1.4 ebgp-multihop 2  
+ neighbor 10.2.4.2 remote-as 200
+ !        
+ address-family vpnv4
+ neighbor 1.1.1.3 activate
+ neighbor 1.1.1.3 next-hop-self
+ neighbor 1.1.1.3 send-community extended
+ neighbor 1.1.1.4 activate
+ neighbor 1.1.1.4 send-community extended
+ neighbor 10.2.4.2 activate
+ neighbor 10.2.4.2 send-community extended
+ exit-address-family
+!
+ip classless
+ip route 1.1.1.4 255.255.255.255 10.2.4.2
+no ip http server
+!
+!
+!
+cdp timer 5
+!
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ no login
+!
+!
+end
