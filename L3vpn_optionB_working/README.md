@@ -2,7 +2,7 @@
 
 ```
 summary:
-reachability inside the vrf A is ok between cisco xr and vmx domain is ok
+reachability inside the vrf A is ok between cisco xr and vmx domain 
 vmx domain is seemless mpls, core (isis) and aggregation (ospf) with no redistribution between them.
 towards aggregation endpoints bgp will transport labels
 core ASBRs are bgp rrs towards the aggregation. :)
