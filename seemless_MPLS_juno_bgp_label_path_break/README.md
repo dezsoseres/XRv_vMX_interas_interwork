@@ -36,7 +36,26 @@ Neighbor: 1.1.56.5
       Local interface: ge-0/0/4.0, Status: Up, Encapsulation: ETHERNET
       Flow Label Transmit: No, Flow Label Receive: No
 
-root@vmx1> 
+root@vmx1> show route table mpls.0 | find ^ge-0/0/4.0 
+ge-0/0/4.0         *[L2CKT/7] 00:02:35, metric2 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 17, Push 26(top) Offset: 252
+
+root@vmx1> show route 1.1.56.5 
+
+inet.0: 20 destinations, 23 routes (20 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.56.5/32        *[BGP/170] 00:33:23, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 26
+
+inet.3: 6 destinations, 9 routes (6 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.56.5/32        *[BGP/170] 00:33:23, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 26
+
 ```
 
 after bgp labeled unicast breaks l2circuit from core to aggregation will go down
@@ -78,6 +97,15 @@ Neighbor: 1.1.56.5
       Negotiated PW status TLV: No
       Local interface: ge-0/0/4.0, Status: Up, Encapsulation: ETHERNET
       Flow Label Transmit: No, Flow Label Receive: No
+
+root@vmx1> show route table mpls.0 | find ^ge-0/0/4.0 
+
+Pattern not found
+
+root@vmx1> show route 1.1.56.5 
+
+root@vmx1> 
+
 
 ping still works in the vrf 
 root@vmx1> ping rapid routing-instance A 12.12.12.1 

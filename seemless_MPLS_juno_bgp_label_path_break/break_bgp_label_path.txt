@@ -224,6 +224,10 @@ mpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
 ge-0/0/4.0         *[L2CKT/7] 00:01:11, metric2 1
                     >  to 11.0.0.5 via ge-0/0/1.0, Push 17, Push 26(top) Offset: 252
 
+root@vmx1> show route table mpls.0 | find ^ge-0/0/4.0 
+ge-0/0/4.0         *[L2CKT/7] 00:02:35, metric2 1
+                    >  to 11.0.0.5 via ge-0/0/1.0, Push 17, Push 26(top) Offset: 252
+
 root@vmx1> show l2circuit connections 
 Layer-2 Circuit Connections:
 
@@ -494,6 +498,11 @@ mpls.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
 21                 *[LDP/9] 00:47:36, metric 1
                     >  to 11.0.0.1 via ge-0/0/0.0, Swap 20
                        to 11.0.0.5 via ge-0/0/1.0, Swap 21
+
+
+root@vmx1> show route table mpls.0 | find ^ge-0/0/4.0    
+
+Pattern not found
 
 
 
