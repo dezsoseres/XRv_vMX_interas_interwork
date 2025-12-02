@@ -39,7 +39,8 @@ Neighbor: 1.1.56.5
 root@vmx1> 
 ```
 
-after
+after bgp labeled unicast breaks l2circuit from core to aggregation will go down
+
 ```
 root@vmx1# deactivate protocols bgp group RR family inet labeled-unicast
 
