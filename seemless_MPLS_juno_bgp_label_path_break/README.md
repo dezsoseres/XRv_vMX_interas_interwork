@@ -5,12 +5,12 @@ only juniper vmxs are running, investigating vrf and l2circuit reachability betw
 summary:
 if bgp ipv4 unicast is ok between core and aggregation vrf ping and l2circuits are ok, if this path break somewhere (no bgp labels ipv4 unicast...), 
 ping still works, but l2circuits go down.
-`
+
 if ok:
-root@vmx1> show l2circuit connections 
+`root@vmx1> show l2circuit connections 
 Layer-2 Circuit Connections:
 
-Legend for connection status (St) 
+`Legend for connection status (St) 
 EI -- encapsulation invalid      NP -- interface h/w not present 
 MM -- mtu mismatch               Dn -- down 
 EM -- encapsulation mismatch     VC-Dn -- Virtual circuit Down 
@@ -24,7 +24,7 @@ LD -- local site signaled down   RS -- remote site standby
 RD -- remote site signaled down  HS -- Hot-standby Connection
 XX -- unknown
 
-Legend for interface status 
+`Legend for interface status 
 Up -- operational 
 Dn -- down 
 Neighbor: 1.1.56.5 
@@ -121,6 +121,6 @@ PING 12.12.12.6 (12.12.12.6): 56 data bytes
 5 packets transmitted, 5 packets received, 0% packet loss
 round-trip min/avg/max/stddev = 2.483/2.789/3.034/0.185 ms
 
-`
+
 
 
