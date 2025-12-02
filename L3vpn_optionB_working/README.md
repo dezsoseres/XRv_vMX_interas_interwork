@@ -1,11 +1,12 @@
 ![image info](./topology.jpg)
 
+```
 summary:
 reachability inside the vrf A is ok between cisco xr and vmx domain is ok
 vmx domain is seemless mpls, core (isis) and aggregation (ospf) with no redistribution between them.
-towards aggregation endpoints bgp will trnasport labels
+towards aggregation endpoints bgp will transport labels
 core ASBRs are bgp rrs towards the aggregation. :)
-
+```
 
 ```
 
