@@ -1,0 +1,218 @@
+root@vmx1> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       0          0          0          0          0          0
+inet.0               
+                       5          2          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.1.1                 100          0          0       0       0       13:51 Active
+1.1.11.10               100         41         31       0       0       11:34 Establ
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 5/5/5/0                 
+
+root@vmx2> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       0          0          0          0          0          0
+inet.0               
+                       5          2          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100         42         32       0       0       12:00 Establ
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 5/5/5/0
+20.0.0.2                200          0          0       0       0       14:12 Connect
+
+root@vmx2> 
+
+
+root@vmx3> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 3 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          0          0          0          0          0
+inet.0               
+                       5          0          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100         41         34       0       0       12:08 Establ
+  inet.0: 0/3/3/0
+  bgp.l3vpn.0: 3/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 3/3/3/0
+1.1.56.5                100         31         41       0       0        9:57 Establ
+  bgp.rtarget.0: 0/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/1/1/0
+1.1.56.6                100         31         37       0       0        9:54 Establ
+  bgp.rtarget.0: 0/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/1/1/0
+
+root@vmx3> 
+
+root@vmx4> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 3 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          0          0          0          0          0
+inet.0               
+                       5          0          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100         41         38       0       0       13:12 Establ
+  inet.0: 0/3/3/0
+  bgp.l3vpn.0: 3/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 3/3/3/0
+1.1.56.5                100         31         37       0       0        9:57 Establ
+  bgp.rtarget.0: 0/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/1/1/0
+1.1.56.6                100         31         41       0       0       10:02 Establ
+  bgp.rtarget.0: 0/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/1/1/0
+
+root@vmx4> 
+
+
+root@rr2> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 5 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.3               
+                       8          2          0          0          0          0
+bgp.l3vpn.0          
+                       8          6          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.1.10                100          0          0       0       0       14:22 Active
+1.1.11.1                100         35         42       0       0       12:35 Establ
+  inet.3: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+1.1.11.2                100         35         42       0       0       12:34 Establ
+  inet.3: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0                  
+1.1.11.3                100         37         41       0       0       12:24 Establ
+  inet.3: 2/3/3/0
+  bgp.l3vpn.0: 3/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+1.1.11.4                100         40         40       0       0       13:24 Establ
+  inet.3: 0/3/3/0
+  bgp.l3vpn.0: 1/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+
+root@rr2> 
+
+
+root@vmx5> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          2          0          0          0          0
+inet.0               
+                      10          4          0          0          0          0
+inet6.0              
+                       0          0          0          0          0          0
+bgp.l3vpn.0          
+                      10         10          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.3                100         43         30       0       0       10:05 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0                  
+  A.inet.0: 4/5/5/0
+1.1.11.4                100         39         30       0       0       10:01 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/5/5/0
+
+root@vmx6> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          2          0          0          0          0
+inet.0               
+                      10          4          0          0          0          0
+inet6.0              
+                       0          0          0          0          0          0
+bgp.l3vpn.0          
+                      10         10          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.3                100         39         30       0       0       10:06 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0                  
+  A.inet.0: 4/5/5/0
+1.1.11.4                100         43         30       0       0       10:10 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 2/5/5/0
+  bgp.l3vpn.0: 5/5/5/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/5/5/0
+
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<lab name="interas-interwork" id="d7b5c00b-2b06-4358-8fa3-77479375a1dd" version="1" scripttimeout="300" lock="0">
+<lab name="interas-interwork-fulltopology" id="d7b5c00b-2b06-4358-8fa3-77479375a1dd" version="1" scripttimeout="300" lock="0">
   <topology>
     <nodes>
       <node id="1" name="xrv1" type="qemu" template="xrv9k" image="xrv9k-fullk9-x-7.9.2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="10" uuid="b7fcd794-d39b-4d68-bb19-b10f962cf0fe" qemu_options="-enable-kvm -smbios type=1,manufacturer=&quot;cisco&quot;,product=&quot;Cisco IOS XRv 9000&quot; -machine type=pc,accel=kvm,usb=off -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc,driftfix=slew -global kvm-pit.lost_tick_policy=discard -no-hpet -realtime mlock=off -no-shutdown -boot order=c -serial null -cpu qemu64,+ssse3,+sse4.1,+sse4.2" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="e1000" delay="0" icon="Router-2D-XRV-S.svg" config="0" left="534" top="204">

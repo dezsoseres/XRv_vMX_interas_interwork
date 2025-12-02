@@ -1,0 +1,216 @@
+hostname xrv2
+username admin
+ group root-lr
+ group cisco-support
+ secret 10 $6$Yk7SA1QW5nslAA1.$2vaSMWTbKtt9r02EDxFUhHcE4Mhrz.VyIxyohcLcPKNa25HaZKQsV5LUwLZLCvjwXINQbNT20iGXjqzEYv5bA1
+!
+!
+call-home
+ service active
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method email disable
+  destination transport-method http
+ !
+!
+interface Loopback0
+ ipv4 address 1.1.1.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ mtu 1714 
+ ipv4 address 10.0.0.1 255.255.255.254
+!
+interface GigabitEthernet0/0/0/1
+ mtu 1714
+ ipv4 address 10.0.0.6 255.255.255.254
+!
+interface GigabitEthernet0/0/0/2
+ ipv4 address 20.0.0.2 255.255.255.254
+!
+interface GigabitEthernet0/0/0/4
+ l2transport
+ !
+!
+router isis 100
+ is-type level-1
+ net 49.0000.0010.0100.1002.00
+ address-family ipv4 unicast
+  metric-style wide level 1
+  router-id Loopback0
+  segment-routing mpls sr-prefer
+ !        
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 2 explicit-null
+  !
+ !
+ interface GigabitEthernet0/0/0/0
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/2
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+!
+l2vpn
+ pw-class NO-CW
+  encapsulation mpls
+   control-word
+   transport-mode ethernet
+  !
+ !
+ xconnect group XCONNS_UZLETI
+  p2p XCONN112
+   neighbor ipv4 1.1.11.2 pw-id 112
+    pw-class NO-CW
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ router-id 1.1.1.2
+ interface GigabitEthernet0/0/0/2
+!
+lldp
+
+
+
+
+set version 23.2R1-S1.6
+set groups CORE-INTF interfaces <*> mtu 9192
+set groups CORE-INTF interfaces <*> link-mode full-duplex
+set groups CORE-INTF interfaces <*> gigether-options no-auto-negotiation
+set groups CORE-INTF interfaces <*> unit 0 family iso
+set groups CORE-INTF interfaces <*> unit 0 family mpls maximum-labels 5
+set groups ISIS protocols isis interface <*> ldp-synchronization
+set groups ISIS protocols isis interface <*> link-protection
+set groups ISIS protocols isis interface <*> point-to-point
+set groups OSPF
+set system host-name vmx2
+set system root-authentication encrypted-password "$6$yHNjOZ1P$NfDqg1Ko8w3Xb9IFlvS5Fm5A.sWq8c74gJL5Vhwgw6YtoQ4DZyzf.M0iSTP1ShIMIFXZTt1ejsrXKBNOJTWwL."
+set chassis network-services enhanced-ip
+set interfaces ge-0/0/0 apply-groups CORE-INTF
+set interfaces ge-0/0/0 unit 0 family inet address 11.0.0.1/31
+set interfaces ge-0/0/1 apply-groups CORE-INTF
+set interfaces ge-0/0/1 unit 0 family inet address 11.0.0.6/31
+set interfaces ge-0/0/2 apply-groups CORE-INTF
+set interfaces ge-0/0/2 unit 0 family inet address 20.0.0.3/31
+set interfaces ge-0/0/4 encapsulation ethernet-ccc
+set interfaces ge-0/0/4 unit 0 family ccc
+set interfaces lo0 unit 0 family inet address 1.1.11.2/32
+set interfaces lo0 unit 0 family iso address 49.0000.0010.0101.1002.00
+set interfaces lo0 unit 100 family inet address 12.12.12.2/32
+set routing-options router-id 1.1.11.2
+set routing-options autonomous-system 100
+set routing-options forwarding-table export LOAD-BALANCE
+set protocols isis apply-groups ISIS
+set protocols isis interface ge-0/0/0.0
+set protocols isis interface ge-0/0/1.0
+set protocols isis interface ge-0/0/2.0
+set protocols isis interface all disable
+set protocols isis interface lo0.0 passive
+set protocols isis source-packet-routing srgb start-label 16000
+set protocols isis source-packet-routing srgb index-range 8000
+set protocols isis source-packet-routing node-segment ipv4-index 112
+set protocols isis source-packet-routing explicit-null
+set protocols isis level 2 wide-metrics-only
+set protocols isis level 1 wide-metrics-only
+set protocols isis reference-bandwidth 1000g
+set protocols isis overload timeout 120
+set protocols l2circuit traceoptions file l2circuit.log
+set protocols l2circuit traceoptions file size 1m
+set protocols l2circuit traceoptions file world-readable
+set protocols l2circuit traceoptions flag connections
+set protocols l2circuit traceoptions flag error
+set protocols l2circuit neighbor 1.1.1.2 interface ge-0/0/4.0 virtual-circuit-id 112
+set protocols l2circuit neighbor 1.1.1.2 interface ge-0/0/4.0 control-word
+set protocols ldp interface ge-0/0/0.0
+set protocols ldp interface ge-0/0/1.0
+set protocols ldp interface ge-0/0/2.0
+deactivate protocols ldp interface ge-0/0/2.0
+set protocols ldp interface lo0.0
+set protocols mpls interface ge-0/0/0.0
+set protocols mpls interface ge-0/0/1.0
+set protocols mpls interface ge-0/0/2.0
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+
+
+root@vmx2> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+1.1.1.2                             lo0.0           0.0.0.0:0            0
+
+RP/0/RP0/CPU0:xrv2#sh mpls ldp neighbor 
+Mon Dec  1 21:14:47.210 UTC
+
+RP/0/RP0/CPU0:xrv2#
+
+RP/0/RP0/CPU0:xrv2#sh mpls forwarding 
+Mon Dec  1 21:15:00.426 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+16002  Aggregate   SR Pfx (idx 2)     default                      0           
+16112  Exp-Null-v4 SR Pfx (idx 112)   Gi0/0/0/2    20.0.0.3        2976        
+24000  Pop         SR Adj (idx 0)     Gi0/0/0/2    20.0.0.3        0           
+24001  Exp-Null-v4 1.1.11.2/32        Gi0/0/0/2    20.0.0.3        0           
+24002  Unlabelled  11.0.0.6/31        Gi0/0/0/2    20.0.0.3        0           
+24003  Unlabelled  11.0.0.0/31        Gi0/0/0/2    20.0.0.3        0           
+24004  Aggregate   A: Per-VRF Aggr[V] A                            0           
+24005  Pop         SR Adj (idx 2)     Gi0/0/0/2    20.0.0.3        0           
+RP/0/RP0/CPU0:xrv2#
+
+root@vmx2> show route table inet.3 
+
+inet.3: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.1.2/32         *[L-ISIS/14] 00:07:09, metric 16777214
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 0
+
+Layer-2 Circuit Connections:
+
+Legend for connection status (St)   
+EI -- encapsulation invalid      NP -- interface h/w not present   
+MM -- mtu mismatch               Dn -- down                       
+EM -- encapsulation mismatch     VC-Dn -- Virtual circuit Down    
+CM -- control-word mismatch      Up -- operational                
+VM -- vlan id mismatch           CF -- Call admission control failure
+OL -- no outgoing label          IB -- TDM incompatible bitrate 
+NC -- intf encaps not CCC/TCC    TM -- TDM misconfiguration 
+BK -- Backup Connection          ST -- Standby Connection
+CB -- rcvd cell-bundle size bad  SP -- Static Pseudowire
+LD -- local site signaled down   RS -- remote site standby
+RD -- remote site signaled down  HS -- Hot-standby Connection
+XX -- unknown
+
+Legend for interface status  
+Up -- operational            
+Dn -- down                   
+Neighbor: 1.1.1.2 
+    Interface                 Type  St     Time last up          # Up trans
+    ge-0/0/4.0(vc 112)        rmt   OL   
+
+root@vmx2> 
+
+
+
+
+
+
+
+
+
