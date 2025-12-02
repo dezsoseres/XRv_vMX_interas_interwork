@@ -1,11 +1,11 @@
 ![image info](./topology.jpg)
 
-only juniper vmxs are running, investigating vrf and l2circuit reachability between core and aggregation:
+only juniper vmxs are running, investigating vrf and l2circuit reachability between core and aggregation
 
 summary:
 if bgp ipv4 unicast is ok between core and aggregation vrf ping and l2circuits are ok, if this path break somewhere (no bgp labels ipv4 unicast...), 
 ping still works, but l2circuits go down.
-
+`
 if ok:
 root@vmx1> show l2circuit connections 
 Layer-2 Circuit Connections:
@@ -121,5 +121,6 @@ PING 12.12.12.6 (12.12.12.6): 56 data bytes
 5 packets transmitted, 5 packets received, 0% packet loss
 round-trip min/avg/max/stddev = 2.483/2.789/3.034/0.185 ms
 
+`
 
 
