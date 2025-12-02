@@ -7,10 +7,10 @@ if bgp ipv4 unicast is ok between core and aggregation vrf ping and l2circuits a
 ping still works, but l2circuits go down.
 
 if ok:
-`root@vmx1> show l2circuit connections 
+```root@vmx1> show l2circuit connections 
 Layer-2 Circuit Connections:
 
-`Legend for connection status (St) 
+Legend for connection status (St) 
 EI -- encapsulation invalid      NP -- interface h/w not present 
 MM -- mtu mismatch               Dn -- down 
 EM -- encapsulation mismatch     VC-Dn -- Virtual circuit Down 
@@ -24,7 +24,7 @@ LD -- local site signaled down   RS -- remote site standby
 RD -- remote site signaled down  HS -- Hot-standby Connection
 XX -- unknown
 
-`Legend for interface status 
+Legend for interface status 
 Up -- operational 
 Dn -- down 
 Neighbor: 1.1.56.5 
@@ -37,7 +37,7 @@ Neighbor: 1.1.56.5
       Flow Label Transmit: No, Flow Label Receive: No
 
 root@vmx1> 
-
+```
 
 
 after
