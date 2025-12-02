@@ -39,8 +39,8 @@ Neighbor: 1.1.56.5
 root@vmx1> 
 ```
 
-
 after
+```
 root@vmx1# deactivate protocols bgp group RR family inet labeled-unicast
 
 [edit]
@@ -121,6 +121,7 @@ PING 12.12.12.6 (12.12.12.6): 56 data bytes
 5 packets transmitted, 5 packets received, 0% packet loss
 round-trip min/avg/max/stddev = 2.483/2.789/3.034/0.185 ms
 
+```
 
 
 
