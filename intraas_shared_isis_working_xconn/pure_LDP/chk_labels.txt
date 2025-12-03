@@ -1,0 +1,167 @@
+root@vmx2> show route table inet.3 
+
+inet.3: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.1.2/32         *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0
+1.1.1.4/32         *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24008
+1.1.11.4/32        *[LDP/9] 00:07:38, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0
+10.0.0.0/31        *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0
+10.0.0.2/31        *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24010
+10.0.0.6/31        *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0
+10.0.0.8/31        *[LDP/9] 00:05:53, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24009
+
+root@vmx2> 
+root@vmx4> show route table inet.3 
+
+inet.3: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.1.2/32         *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 22
+1.1.1.4/32         *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 23
+1.1.11.2/32        *[LDP/9] 00:07:41, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0
+10.0.0.0/31        *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 22
+10.0.0.2/31        *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 24
+10.0.0.6/31        *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 22
+10.0.0.8/31        *[LDP/9] 00:05:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 25
+
+root@vmx4> 
+
+root@vmx2> show route table mpls.0 
+
+mpls.0: 18 destinations, 18 routes (18 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 03:06:02, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 03:06:02, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 03:06:02, metric 1
+                       Receive
+2                  *[MPLS/0] 03:06:02, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 03:06:02, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 03:06:02, metric 1
+                       Receive
+16                 *[VPN/0] 03:06:02
+                    >  via lsi.0 (A), Pop      
+17                 *[L2CKT/7] 00:06:28
+                    >  via ge-0/0/4.0, Pop      
+20                 *[L2CKT/7] 00:08:26
+                    >  via ge-0/0/5.0, Pop      
+21                 *[LDP/9] 00:08:26, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+21(S=0)            *[LDP/9] 00:08:26, metric 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Pop      
+22                 *[LDP/9] 00:06:41, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Pop      
+22(S=0)            *[LDP/9] 00:06:41, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Pop      
+23                 *[LDP/9] 00:06:41, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Swap 24008
+24                 *[LDP/9] 00:06:41, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Swap 24010
+25                 *[LDP/9] 00:06:41, metric 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Swap 24009
+ge-0/0/4.0         *[L2CKT/7] 00:06:28, metric2 1
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24013
+ge-0/0/5.0         *[L2CKT/7] 00:08:26, metric2 1
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 17
+
+root@vmx2> 
+
+
+root@vmx4> show route table mpls.0 
+
+mpls.0: 17 destinations, 17 routes (17 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:51:51, metric 1
+                       to table inet.0
+0(S=0)             *[MPLS/0] 01:51:51, metric 1
+                       to table mpls.0
+1                  *[MPLS/0] 01:51:51, metric 1
+                       Receive
+2                  *[MPLS/0] 01:51:51, metric 1
+                       to table inet6.0
+2(S=0)             *[MPLS/0] 01:51:51, metric 1
+                       to table mpls.0
+13                 *[MPLS/0] 01:51:51, metric 1
+                       Receive
+16                 *[VPN/0] 01:51:50
+                    >  via lsi.0 (A), Pop      
+17                 *[L2CKT/7] 00:08:41
+                    >  via ge-0/0/5.0, Pop      
+19                 *[L2CKT/7] 00:05:58
+                    >  via ge-0/0/6.0, Pop      
+20                 *[LDP/9] 00:08:41, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+20(S=0)            *[LDP/9] 00:08:41, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Pop      
+21                 *[LDP/9] 00:06:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 22
+22                 *[LDP/9] 00:06:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 23
+23                 *[LDP/9] 00:06:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 24
+24                 *[LDP/9] 00:06:56, metric 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Swap 25
+ge-0/0/5.0         *[L2CKT/7] 00:08:41, metric2 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 20
+ge-0/0/6.0         *[L2CKT/7] 00:05:58, metric2 1
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 24013, Push 23(top)
+
+root@vmx4> 
+
+RP/0/RP0/CPU0:xrv2# sh mpls forwarding 
+Wed Dec  3 22:18:27.830 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24002  Pop         1.1.11.2/32        Gi0/0/0/2    20.0.0.3        5058        
+24003  Unlabelled  11.0.0.6/31        Gi0/0/0/2    20.0.0.3        0           
+24004  Unlabelled  11.0.0.0/31        Gi0/0/0/2    20.0.0.3        0           
+24005  Aggregate   A: Per-VRF Aggr[V] A                            0           
+24008  Pop         1.1.1.4/32         Gi0/0/0/1    10.0.0.7        822         
+24009  Pop         10.0.0.8/31        Gi0/0/0/1    10.0.0.7        0           
+24010  Pop         10.0.0.2/31        Gi0/0/0/1    10.0.0.7        0           
+24011  21          1.1.11.4/32        Gi0/0/0/2    20.0.0.3        11502       
+24012  Pop         PW(1.1.1.4:24)     Gi0/0/0/5    point2point     0           
+24013  Pop         PW(1.1.11.2:112)   Gi0/0/0/4    point2point     0           
+RP/0/RP0/CPU0:xrv2# 
+
+RP/0/RP0/CPU0:xrv4#sh mpls forwarding 
+Wed Dec  3 22:18:41.741 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+24000  Aggregate   A: Per-VRF Aggr[V] A                            0           
+24003  Pop         1.1.1.2/32         Gi0/0/0/1    10.0.0.6        936         
+24004  24002       1.1.11.2/32        Gi0/0/0/1    10.0.0.6        98          
+24005  Pop         10.0.0.0/31        Gi0/0/0/1    10.0.0.6        0           
+24006  Pop         20.0.0.2/31        Gi0/0/0/1    10.0.0.6        0           
+24007  24003       11.0.0.6/31        Gi0/0/0/1    10.0.0.6        0           
+24008  24004       11.0.0.0/31        Gi0/0/0/1    10.0.0.6        0           
+24009  24011       1.1.11.4/32        Gi0/0/0/1    10.0.0.6        10546       
+24010  Pop         PW(1.1.1.2:24)     Gi0/0/0/5    point2point     0           
+24013  Pop         PW(1.1.11.4:44)    Gi0/0/0/4    point2point     0           
+RP/0/RP0/CPU0:xrv4#  
+
+
+
+

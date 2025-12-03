@@ -1,0 +1,93 @@
+root@vmx2> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+1.1.1.2                             lo0.0           1.1.1.2:0            42
+1.1.11.4                            lo0.0           1.1.11.4:0           43
+
+root@vmx2> show ldp session     
+  Address                           State       Connection  Hold time  Adv. Mode
+1.1.1.2                             Operational Open          24         DU
+1.1.11.4                            Operational Open          22         DU
+
+root@vmx4> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+1.1.11.2                            lo0.0           1.1.11.2:0           33
+1.1.1.4                             lo0.0           1.1.1.4:0            43
+
+root@vmx4> show ldp session 
+  Address                           State       Connection  Hold time  Adv. Mode
+1.1.1.4                             Operational Open          29         DU
+1.1.11.2                            Operational Open          28         DU
+
+RP/0/RP0/CPU0:xrv2#sh mpls ldp neighbor 
+Wed Dec  3 21:47:57.827 UTC
+
+Peer LDP Identifier: 1.1.1.4:0
+  TCP connection: 1.1.1.4:19392 - 1.1.1.2:646
+  Graceful Restart: No
+  Session Holdtime: 180 sec
+  State: Oper; Msgs sent/rcvd: 71/70; Downstream-Unsolicited
+  Up time: 00:46:55
+  LDP Discovery Sources:
+    IPv4: (1)
+      Targeted Hello (1.1.1.2 -> 1.1.1.4, active)
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (4)
+      1.1.1.4        10.0.0.3       10.0.0.7       10.0.0.8       
+    IPv6: (0)
+
+Peer LDP Identifier: 1.1.11.2:0
+  TCP connection: 1.1.11.2:54986 - 1.1.1.2:646
+  Graceful Restart: No
+  Session Holdtime: 30 sec
+  State: Oper; Msgs sent/rcvd: 320/273; Downstream-Unsolicited
+  Up time: 00:44:06
+  LDP Discovery Sources:
+    IPv4: (1)
+      Targeted Hello (1.1.1.2 -> 1.1.11.2, active)
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (1)
+      1.1.11.2       
+    IPv6: (0)
+
+RP/0/RP0/CPU0:xrv2#
+
+RP/0/RP0/CPU0:xrv4#sh mpls ldp neighbor 
+Wed Dec  3 21:48:27.819 UTC
+
+Peer LDP Identifier: 1.1.1.2:0
+  TCP connection: 1.1.1.2:646 - 1.1.1.4:19392
+  Graceful Restart: No
+  Session Holdtime: 180 sec
+  State: Oper; Msgs sent/rcvd: 71/71; Downstream-Unsolicited
+  Up time: 00:47:25
+  LDP Discovery Sources:
+    IPv4: (1)
+      Targeted Hello (1.1.1.4 -> 1.1.1.2, active)
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (4)
+      1.1.1.2        10.0.0.1       10.0.0.6       20.0.0.2       
+    IPv6: (0)
+
+Peer LDP Identifier: 1.1.11.4:0
+  TCP connection: 1.1.11.4:64240 - 1.1.1.4:646
+  Graceful Restart: No
+  Session Holdtime: 30 sec
+  State: Oper; Msgs sent/rcvd: 146/121; Downstream-Unsolicited
+  Up time: 00:19:13
+  LDP Discovery Sources:
+    IPv4: (1)
+      Targeted Hello (1.1.1.4 -> 1.1.11.4, active)
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (1)
+      1.1.11.4       
+    IPv6: (0)
+
+RP/0/RP0/CPU0:xrv4# 
+
+
+
+

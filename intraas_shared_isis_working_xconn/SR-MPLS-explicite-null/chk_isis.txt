@@ -1,0 +1,32 @@
+root@vmx2> show isis adjacency 
+Interface             System         L State         Hold (secs) SNPA
+ge-0/0/1.0            vmx4           2  Up                    20
+ge-0/0/2.0            xrv2           1  Up                    28
+
+root@vmx4> show isis adjacency 
+Interface             System         L State         Hold (secs) SNPA
+ge-0/0/1.0            vmx2           2  Up                    22
+
+RP/0/RP0/CPU0:xrv2#sh isis neighbors 
+Wed Dec  3 21:42:08.408 UTC
+
+IS-IS 100 neighbors:
+System Id      Interface        SNPA           State Holdtime Type IETF-NSF
+xrv4           Gi0/0/0/1        *PtoP*         Up    29       L1   Capable 
+vmx2           Gi0/0/0/2        *PtoP*         Up    24       L1   Capable 
+
+Total neighbor count: 2
+
+RP/0/RP0/CPU0:xrv4#sh isis neighbors 
+Wed Dec  3 21:42:25.480 UTC
+
+IS-IS 100 neighbors:
+System Id      Interface        SNPA           State Holdtime Type IETF-NSF
+xrv2           Gi0/0/0/1        *PtoP*         Up    27       L1   Capable 
+
+Total neighbor count: 1
+
+
+
+
+

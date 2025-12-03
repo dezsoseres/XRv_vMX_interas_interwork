@@ -1,0 +1,22 @@
+
+root@vmx4> show isis overview | match All 
+    Allow route leaking: disabled
+    Allow internal prefix overloading: disabled
+    Allow external prefix overloading: disabled
+    SRGB Block Allocation: Success
+
+root@vmx2> show isis overview | match All 
+    Allow route leaking: disabled
+    Allow internal prefix overloading: disabled
+    Allow external prefix overloading: disabled
+    SRGB Block Allocation: Success
+
+root@vmx2> 
+
+in case of label allocation failure in SR-MPLS on a vmx, reload is necessary
+
+
+
+
+
+

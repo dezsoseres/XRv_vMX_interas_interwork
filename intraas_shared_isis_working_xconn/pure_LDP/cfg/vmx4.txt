@@ -24,6 +24,10 @@ set interfaces ge-0/0/3 apply-groups METRO-INTF
 set interfaces ge-0/0/3 unit 0 family inet address 12.0.0.4/31
 set interfaces ge-0/0/4 apply-groups CORE-INTF
 set interfaces ge-0/0/4 unit 0 family inet address 11.0.0.8/31
+set interfaces ge-0/0/5 encapsulation ethernet-ccc
+set interfaces ge-0/0/5 unit 0 family ccc
+set interfaces ge-0/0/6 encapsulation ethernet-ccc
+set interfaces ge-0/0/6 unit 0 family ccc
 set interfaces lo0 unit 0 family inet address 1.1.11.4/32
 set interfaces lo0 unit 0 family iso address 49.0000.0010.0101.1004.00
 set interfaces lo0 unit 100 family inet address 12.12.12.4/32
@@ -106,15 +110,16 @@ set protocols isis interface ge-0/0/3.0 passive
 set protocols isis interface ge-0/0/4.0
 set protocols isis interface all disable
 set protocols isis interface lo0.0 passive
-set protocols isis level 1 disable      
+set protocols isis level 1 disable
 set protocols isis level 2 wide-metrics-only
 set protocols isis reference-bandwidth 1000g
 set protocols isis overload timeout 120
+set protocols l2circuit neighbor 1.1.11.2 interface ge-0/0/5.0 virtual-circuit-id 124
+set protocols l2circuit neighbor 1.1.11.2 interface ge-0/0/5.0 no-control-word
+set protocols l2circuit neighbor 1.1.1.4 interface ge-0/0/6.0 virtual-circuit-id 44
+set protocols l2circuit neighbor 1.1.1.4 interface ge-0/0/6.0 no-control-word
 set protocols ldp transport-address router-id
-set protocols ldp interface ge-0/0/0.0
 set protocols ldp interface ge-0/0/1.0
-set protocols ldp interface ge-0/0/3.0
-set protocols ldp interface ge-0/0/4.0
 set protocols ldp interface lo0.0
 set protocols mpls interface ge-0/0/0.0
 set protocols mpls interface ge-0/0/1.0
@@ -129,5 +134,5 @@ set protocols ospf preference 19
 set protocols ospf reference-bandwidth 1000g
 set protocols lldp port-id-subtype interface-name
 set protocols lldp interface all
-                                        
+
 

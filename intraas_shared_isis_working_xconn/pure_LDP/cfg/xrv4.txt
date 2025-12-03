@@ -1,13 +1,13 @@
 hostname xrv4
-username root
- group root-lr
- group cisco-support
- secret 10 $6$X2Ajc//n9OwW4c/.$rO.dDYWV3//UYnDKzOL3RC.B/hm9EZShwYeuqaJnyTqU3Ysvigj3hYSVypmrZ24UY5RuNMFqEGGC3Cse0Mg8K0
-!
 username admin
  group root-lr
  group cisco-support
  secret 10 $6$sQI8715ZGmdYA71.$/UWpzmvLNoXKPasKuiEz2BTmQ2kRwei4dCQHbFEvrmyLck6Ego6GsBa2dNxnT.T0JfWlaQ1mAbzB3uTD351rj.
+!
+username root
+ group root-lr
+ group cisco-support
+ secret 10 $6$X2Ajc//n9OwW4c/.$rO.dDYWV3//UYnDKzOL3RC.B/hm9EZShwYeuqaJnyTqU3Ysvigj3hYSVypmrZ24UY5RuNMFqEGGC3Cse0Mg8K0
 !
 vrf A
  rd 200:1
@@ -47,9 +47,6 @@ interface GigabitEthernet0/0/0/1
  mtu 1714
  ipv4 address 10.0.0.7 255.255.255.254
 !
-interface GigabitEthernet0/0/0/2
- shutdown
-!
 interface GigabitEthernet0/0/0/3
  mtu 1714
  ipv4 address 10.0.0.8 255.255.255.254
@@ -59,7 +56,8 @@ interface GigabitEthernet0/0/0/4
  !
 !
 interface GigabitEthernet0/0/0/5
- shutdown
+ l2transport
+ !
 !
 interface GigabitEthernet0/0/0/6
  shutdown
@@ -69,6 +67,7 @@ router isis 100
  net 49.0000.0010.0100.1004.00
  address-family ipv4 unicast
   metric-style wide level 1
+  router-id Loopback0
  !
  interface Loopback0
   passive
@@ -88,7 +87,7 @@ router isis 100
  interface GigabitEthernet0/0/0/3
   point-to-point
   address-family ipv4 unicast
-  !
+  !       
  !
 !
 router bgp 100
@@ -110,13 +109,21 @@ router bgp 100
   !
  !
 !
-l2vpn     
+l2vpn
  xconnect group XCONNS_UZLETI
+  p2p XCONN24
+   interface GigabitEthernet0/0/0/5
+   neighbor ipv4 1.1.1.2 pw-id 24
+   !
+  !
   p2p XCONN111
-   neighbor ipv4 1.1.11.3 pw-id 111
+   interface GigabitEthernet0/0/0/4
+   neighbor ipv4 1.1.11.4 pw-id 44
    !
   !
  !
+!
+mpls oam
 !
 mpls ldp
  log
@@ -127,14 +134,11 @@ mpls ldp
  !
  router-id 1.1.1.4
  session protection
- interface GigabitEthernet0/0/0/0
- !
  interface GigabitEthernet0/0/0/1
  !
- interface GigabitEthernet0/0/0/3
- !
-!         
+!
 lldp
 !
 end
+
 

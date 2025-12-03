@@ -1,14 +1,13 @@
-!
 hostname xrv2
-username root
- group root-lr
- group cisco-support
- secret 10 $6$X2Ajc//n9OwW4c/.$rO.dDYWV3//UYnDKzOL3RC.B/hm9EZShwYeuqaJnyTqU3Ysvigj3hYSVypmrZ24UY5RuNMFqEGGC3Cse0Mg8K0
-!
 username admin
  group root-lr
  group cisco-support
  secret 10 $6$Yk7SA1QW5nslAA1.$2vaSMWTbKtt9r02EDxFUhHcE4Mhrz.VyIxyohcLcPKNa25HaZKQsV5LUwLZLCvjwXINQbNT20iGXjqzEYv5bA1
+!
+username root
+ group root-lr
+ group cisco-support
+ secret 10 $6$X2Ajc//n9OwW4c/.$rO.dDYWV3//UYnDKzOL3RC.B/hm9EZShwYeuqaJnyTqU3Ysvigj3hYSVypmrZ24UY5RuNMFqEGGC3Cse0Mg8K0
 !
 vrf A
  !vrf A
@@ -56,41 +55,27 @@ interface GigabitEthernet0/0/0/3
  shutdown
 !
 interface GigabitEthernet0/0/0/4
- shutdown
+ l2transport
+ !
 !
 interface GigabitEthernet0/0/0/5
- shutdown
+ l2transport
+ !
 !
 interface GigabitEthernet0/0/0/6
  shutdown
-!
-prefix-set L0-AS200
-  1.1.1.0/24 ge 32 le 32
-end-set
-!
-route-policy L0-AS200
-  if destination in L0-AS200 then
-    done
-  else
-    drop
-  endif
-end-policy
-!
+!         
 route-policy ACCEPT-ALL
   pass
 end-policy
-!
-router static
- address-family ipv4 unicast
-  20.0.0.3/32 GigabitEthernet0/0/0/2 20.0.0.3
-  20.0.0.3/32 GigabitEthernet0/0/0/2
- !
 !
 router isis 100
  is-type level-1
  net 49.0000.0010.0100.1002.00
  address-family ipv4 unicast
+  metric-style wide
   metric-style wide level 1
+  router-id Loopback0
  !
  interface Loopback0
   passive
@@ -111,7 +96,7 @@ router isis 100
   point-to-point
   address-family ipv4 unicast
   !
- !        
+ !
 !
 router bgp 100
  bgp router-id 1.1.1.2
@@ -125,24 +110,31 @@ router bgp 100
   address-family vpnv4 unicast
    soft-reconfiguration inbound
   !
- !
+ !        
  vrf A
   address-family ipv4 unicast
    redistribute connected
   !
  !
 !
-mpls ldp
- log
-  neighbor
-  nsr
-  graceful-restart
-  session-protection
+l2vpn
+ xconnect group XCONNS_UZLETI
+  p2p XCONN24
+   interface GigabitEthernet0/0/0/5
+   neighbor ipv4 1.1.1.4 pw-id 24
+   !
+  !
+  p2p XCONN112
+   interface GigabitEthernet0/0/0/4
+   neighbor ipv4 1.1.11.2 pw-id 112
+   !
+  !
  !
+!
+mpls oam
+!
+mpls ldp  
  router-id 1.1.1.2
- session protection
- interface GigabitEthernet0/0/0/0
- !
  interface GigabitEthernet0/0/0/1
  !
  interface GigabitEthernet0/0/0/2

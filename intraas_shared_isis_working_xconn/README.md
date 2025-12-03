@@ -1,0 +1,128 @@
+# cisco XR - juniper MX interworking xconnect/l2circuit
+
+![image info](./topology.jpg)
+
+xconnects are working between xrs, xrs-vmxs, vmxs.
+
+```
+
+root@vmx4> show l2circuit connections 
+Layer-2 Circuit Connections:
+
+Legend for connection status (St)   
+EI -- encapsulation invalid      NP -- interface h/w not present   
+MM -- mtu mismatch               Dn -- down                       
+EM -- encapsulation mismatch     VC-Dn -- Virtual circuit Down    
+CM -- control-word mismatch      Up -- operational                
+VM -- vlan id mismatch           CF -- Call admission control failure
+OL -- no outgoing label          IB -- TDM incompatible bitrate 
+NC -- intf encaps not CCC/TCC    TM -- TDM misconfiguration 
+BK -- Backup Connection          ST -- Standby Connection
+CB -- rcvd cell-bundle size bad  SP -- Static Pseudowire
+LD -- local site signaled down   RS -- remote site standby
+RD -- remote site signaled down  HS -- Hot-standby Connection
+XX -- unknown
+
+Legend for interface status 
+Up -- operational 
+Dn -- down 
+Neighbor: 1.1.1.4                                                                               <<< vmx4 - xrv4
+    Interface                 Type  St     Time last up          # Up trans
+    ge-0/0/6.0(vc 44)         rmt   Up     Dec  3 21:29:15 2025           1
+      Remote PE: 1.1.1.4, Negotiated control-word: No
+      Incoming label: 19, Outgoing label: 24013
+      Negotiated PW status TLV: No
+      Local interface: ge-0/0/6.0, Status: Up, Encapsulation: ETHERNET
+      Flow Label Transmit: No, Flow Label Receive: No
+Neighbor: 1.1.11.2                                                                               <<< vmx4 - vmx2
+    Interface                 Type  St     Time last up          # Up trans
+    ge-0/0/5.0(vc 124)        rmt   Up     Dec  3 21:15:36 2025           1
+      Remote PE: 1.1.11.2, Negotiated control-word: No
+      Incoming label: 17, Outgoing label: 20
+      Negotiated PW status TLV: No
+      Local interface: ge-0/0/5.0, Status: Up, Encapsulation: ETHERNET
+      Flow Label Transmit: No, Flow Label Receive: No
+
+root@vmx4> 
+
+
+root@vmx2> show l2circuit connections 
+Layer-2 Circuit Connections:
+
+Legend for connection status (St) 
+EI -- encapsulation invalid      NP -- interface h/w not present 
+MM -- mtu mismatch               Dn -- down 
+EM -- encapsulation mismatch     VC-Dn -- Virtual circuit Down 
+CM -- control-word mismatch      Up -- operational 
+VM -- vlan id mismatch           CF -- Call admission control failure
+OL -- no outgoing label          IB -- TDM incompatible bitrate 
+NC -- intf encaps not CCC/TCC    TM -- TDM misconfiguration 
+BK -- Backup Connection          ST -- Standby Connection
+CB -- rcvd cell-bundle size bad  SP -- Static Pseudowire
+LD -- local site signaled down   RS -- remote site standby
+RD -- remote site signaled down  HS -- Hot-standby Connection
+XX -- unknown
+
+Legend for interface status 
+Up -- operational 
+Dn -- down 
+Neighbor: 1.1.1.2                                                                                <<< vmx2 - xrv4
+    Interface                 Type  St     Time last up          # Up trans
+    ge-0/0/4.0(vc 112)        rmt   Up     Dec  3 21:03:52 2025           1
+      Remote PE: 1.1.1.2, Negotiated control-word: No
+      Incoming label: 17, Outgoing label: 24013
+      Negotiated PW status TLV: No
+      Local interface: ge-0/0/4.0, Status: Up, Encapsulation: ETHERNET
+      Flow Label Transmit: No, Flow Label Receive: No
+Neighbor: 1.1.11.4                                                                               <<< vmx2 - vmx4
+    Interface                 Type  St     Time last up          # Up trans
+    ge-0/0/5.0(vc 124)        rmt   Up     Dec  3 20:51:03 2025           1
+      Remote PE: 1.1.11.4, Negotiated control-word: No
+      Incoming label: 20, Outgoing label: 17
+      Negotiated PW status TLV: No
+      Local interface: ge-0/0/5.0, Status: Up, Encapsulation: ETHERNET
+      Flow Label Transmit: No, Flow Label Receive: No
+
+root@vmx2> 
+
+
+RP/0/RP0/CPU0:xrv2#sh l2vpn xconnect 
+Wed Dec  3 21:37:32.131 UTC
+Legend: ST = State, UP = Up, DN = Down, AD = Admin Down, UR = Unresolved,
+        SB = Standby, SR = Standby Ready, (PP) = Partially Programmed,
+        LU = Local Up, RU = Remote Up, CO = Connected, (SI) = Seamless Inactive
+
+XConnect                   Segment 1                       Segment 2 
+Group      Name       ST   Description            ST       Description            ST 
+------------------------   -----------------------------   -----------------------------
+XCONNS_UZLETI 
+           XCONN24    UP   Gi0/0/0/5              UP       1.1.1.4         24     UP                        <<< xrv2 - xrv4
+----------------------------------------------------------------------------------------
+XCONNS_UZLETI
+           XCONN112   UP   Gi0/0/0/4              UP       1.1.11.2        112    UP                        <<< xrv2 - vmx2
+----------------------------------------------------------------------------------------
+RP/0/RP0/CPU0:xrv2# 
+
+RP/0/RP0/CPU0:xrv4#sh l2vpn xconnect 
+Wed Dec  3 21:38:01.609 UTC
+Legend: ST = State, UP = Up, DN = Down, AD = Admin Down, UR = Unresolved,
+        SB = Standby, SR = Standby Ready, (PP) = Partially Programmed,
+        LU = Local Up, RU = Remote Up, CO = Connected, (SI) = Seamless Inactive
+
+XConnect                   Segment 1                       Segment 2 
+Group      Name       ST   Description            ST       Description            ST 
+------------------------   -----------------------------   -----------------------------
+XCONNS_UZLETI
+           XCONN24    UP   Gi0/0/0/5              UP       1.1.1.2         24     UP                        <<< xrv4 - xrv2
+----------------------------------------------------------------------------------------
+XCONNS_UZLETI
+           XCONN111   UP   Gi0/0/0/4              UP       1.1.11.4        44     UP                        <<< xrv4 - vmx4 
+----------------------------------------------------------------------------------------
+RP/0/RP0/CPU0:xrv4#  
+
+```
+
+
+
+
+
