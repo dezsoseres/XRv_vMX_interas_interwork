@@ -7,7 +7,8 @@ if bgp ipv4 unicast is ok between core and aggregation vrf ping and l2circuits a
 ping still works, but l2circuits go down.
 
 if ok:
-```root@vmx1> show l2circuit connections 
+```
+root@vmx1> show l2circuit connections 
 Layer-2 Circuit Connections:
 
 Legend for connection status (St) 
