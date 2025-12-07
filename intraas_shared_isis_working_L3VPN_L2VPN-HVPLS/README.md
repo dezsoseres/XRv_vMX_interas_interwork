@@ -7,8 +7,9 @@ vmx domain is seemless mpls, core (isis) and aggregation (ospf) have no redistri
 core ASBR (vmx4) is bgp RR towards the aggregation. :)
 
 it is an example config for L3VPN and L2VPN H-VPLS.
+
 L3VPN: 
-  all xr,vmx has a vrf loopback, they can reach each-other.
+  every xr,vmx has a vrf loopback, they can reach each-other.
 
 H-VPLS:
                            ce2
