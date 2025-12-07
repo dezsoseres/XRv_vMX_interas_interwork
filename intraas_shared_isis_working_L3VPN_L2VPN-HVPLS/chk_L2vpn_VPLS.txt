@@ -1,0 +1,328 @@
+
+RP/0/RP0/CPU0:xrv4#sh l2vpn xconnect 
+Sun Dec  7 19:56:11.295 UTC
+ Legend: ST = State, UP = Up, DN = Down, AD = Admin Down, UR = Unresolved,
+        SB = Standby, SR = Standby Ready, (PP) = Partially Programmed,
+        LU = Local Up, RU = Remote Up, CO = Connected, (SI) = Seamless Inactive
+
+XConnect                   Segment 1                       Segment 2                
+Group      Name       ST   Description            ST       Description            ST    
+------------------------   -----------------------------   -----------------------------
+XCONNS_UZLETI
+           XCONN112   UP   Gi0/0/0/2              UP       1.1.11.4        1232   UP    
+----------------------------------------------------------------------------------------
+RP/0/RP0/CPU0:xrv4# 
+
+root@vmx4> show vpls connections               
+Layer-2 VPN connections:
+
+Legend for connection status (St)   
+EI -- encapsulation invalid      NC -- interface encapsulation not CCC/TCC/VPLS
+EM -- encapsulation mismatch     WE -- interface and instance encaps not same
+VC-Dn -- Virtual circuit down    NP -- interface hardware not present 
+CM -- control-word mismatch      -> -- only outbound connection is up
+CN -- circuit not provisioned    <- -- only inbound connection is up
+OR -- out of range               Up -- operational
+OL -- no outgoing label          Dn -- down                      
+LD -- local site signaled down   CF -- call admission control failure      
+RD -- remote site signaled down  SC -- local and remote site ID collision
+LN -- local site not designated  LM -- local site ID not minimum designated
+RN -- remote site not designated RM -- remote site ID not minimum designated
+XX -- unknown connection status  IL -- no incoming label
+MM -- MTU mismatch               MI -- Mesh-Group ID not available
+BK -- Backup connection          ST -- Standby connection
+PF -- Profile parse failure      PB -- Profile busy
+RS -- remote site standby        SN -- Static Neighbor
+LB -- Local site not best-site   RB -- Remote site not best-site
+VM -- VLAN ID mismatch           HS -- Hot-standby Connection
+
+Legend for interface status 
+Up -- operational                       
+Dn -- down
+
+Instance: VPLS1
+Edge protection: Not-Primary
+  BGP-VPLS State
+  Local site: SITE2 (2)
+    connection-site           Type  St     Time last up          # Up trans
+    3                         rmt   Up     Dec  7 19:32:45 2025           1
+      Remote PE: 1.1.56.6, Negotiated control-word: No
+      Incoming label: 27, Outgoing label: 19
+      Local interface: lsi.1048577, Status: Up, Encapsulation: VPLS
+        Description: Intf - vpls VPLS1 local site 2 remote site 3
+      Flow Label Transmit: No, Flow Label Receive: No
+  LDP-VPLS State
+  VPLS-id: 123
+  Mesh-group connections: L2CIRCUITS
+    Neighbor                  Type  St     Time last up          # Up trans
+    1.1.1.4(vpls-id 1232)     rmt   Up     Dec  7 19:23:57 2025           1
+      Remote PE: 1.1.1.4, Negotiated control-word: No
+      Incoming label: 35, Outgoing label: 24005
+      Negotiated PW status TLV: No
+      Local interface: lsi.1048576, Status: Up, Encapsulation: ETHERNET
+        Description: Intf - vpls VPLS1 neighbor 1.1.1.4 vpls-id 1232
+      Flow Label Transmit: No, Flow Label Receive: No
+    1.1.1.4(vpls-id 123)      rmt   OL   
+
+root@vmx4> 
+
+root@vmx6> show vpls connections 
+Layer-2 VPN connections:
+
+Legend for connection status (St)   
+EI -- encapsulation invalid      NC -- interface encapsulation not CCC/TCC/VPLS
+EM -- encapsulation mismatch     WE -- interface and instance encaps not same
+VC-Dn -- Virtual circuit down    NP -- interface hardware not present 
+CM -- control-word mismatch      -> -- only outbound connection is up
+CN -- circuit not provisioned    <- -- only inbound connection is up
+OR -- out of range               Up -- operational
+OL -- no outgoing label          Dn -- down                      
+LD -- local site signaled down   CF -- call admission control failure      
+RD -- remote site signaled down  SC -- local and remote site ID collision
+LN -- local site not designated  LM -- local site ID not minimum designated
+RN -- remote site not designated RM -- remote site ID not minimum designated
+XX -- unknown connection status  IL -- no incoming label
+MM -- MTU mismatch               MI -- Mesh-Group ID not available
+BK -- Backup connection          ST -- Standby connection
+PF -- Profile parse failure      PB -- Profile busy
+RS -- remote site standby        SN -- Static Neighbor
+LB -- Local site not best-site   RB -- Remote site not best-site
+VM -- VLAN ID mismatch           HS -- Hot-standby Connection
+
+Legend for interface status 
+Up -- operational                       
+Dn -- down
+
+Instance: VPLS1
+Edge protection: Not-Primary
+  BGP-VPLS State
+  Local site: SITE3 (3)
+    connection-site           Type  St     Time last up          # Up trans
+    2                         rmt   Up     Dec  7 19:32:45 2025           1
+      Remote PE: 1.1.11.4, Negotiated control-word: No
+      Incoming label: 19, Outgoing label: 27
+      Local interface: lsi.1048576, Status: Up, Encapsulation: VPLS
+        Description: Intf - vpls VPLS1 local site 3 remote site 2
+      Flow Label Transmit: No, Flow Label Receive: No
+  LDP-VPLS State
+  VPLS-id: 123
+
+root@vmx6> 
+
+ce1#sh ip int brief | inc 22.22.22
+FastEthernet2/0        22.22.22.1      YES manual up                    up      
+
+ce1#ping 22.22.22.2
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 22.22.22.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 68/72/80 ms
+ce1#ping 22.22.22.3
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 22.22.22.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 64/69/76 ms
+ce1#
+
+ce1#sh arp 
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  22.22.22.1              -   ca0d.ff1e.0038  ARPA   FastEthernet2/0
+Internet  22.22.22.2             22   ca01.fdf1.0000  ARPA   FastEthernet2/0
+Internet  22.22.22.3             22   ca13.0a28.0038  ARPA   FastEthernet2/0
+ce1#
+
+
+root@vmx4> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          0          0          0          0          0
+inet.0               
+                       1          0          0          0          0          0
+bgp.l3vpn.0          
+                       4          4          0          0          0          0
+bgp.l2vpn.0          
+                       1          1          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100        180        180       0       0     1:16:11 Establ
+  inet.0: 0/0/0/0
+  bgp.l3vpn.0: 3/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 3/3/3/0
+  VPLS1.l2vpn.0: 0/0/0/0
+1.1.56.6                100        180        182       0       0     1:15:17 Establ
+  bgp.rtarget.0: 0/2/2/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 1/1/1/0
+  A.inet.0: 1/1/1/0
+  VPLS1.l2vpn.0: 1/1/1/0
+
+root@vmx4> 
+
+root@vmx6> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       1          1          0          0          0          0
+inet.0               
+                       1          0          0          0          0          0
+inet6.0              
+                       0          0          0          0          0          0
+bgp.l3vpn.0          
+                       4          4          0          0          0          0
+bgp.l2vpn.0          
+                       1          1          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.3                100          0          0       0       0     1:16:43 Active
+1.1.11.4                100        184        179       0       0     1:15:34 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 0/1/1/0                       
+  bgp.l3vpn.0: 4/4/4/0
+  bgp.l2vpn.0: 1/1/1/0
+  VPLS1.l2vpn.0: 1/1/1/0
+  A.inet.0: 4/4/4/0
+
+root@vmx6> 
+
+root@vmx6> show route receive-protocol bgp 1.1.11.4 
+
+inet.0: 8 destinations, 10 routes (8 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+inet.3: 1 destinations, 2 routes (1 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 11.11.11.2/32           1.1.11.4             0       100        ?
+* 11.11.11.4/32           1.1.11.4             0       100        ?
+* 12.12.12.2/32           1.1.11.4                     100        I
+* 12.12.12.4/32           1.1.11.4                     100        I
+
+mpls.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.2:1:12.12.12.2/32                    
+*                         1.1.11.4                     100        I
+  1.1.11.4:1:12.12.12.4/32                    
+*                         1.1.11.4                     100        I
+  100:1:11.11.11.2/32                    
+*                         1.1.11.4             0       100        ?
+  100:1:11.11.11.4/32                    
+*                         1.1.11.4             0       100        ?
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.l2vpn.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4:123:2:1/96                    
+*                         1.1.11.4                     100        I
+
+VPLS1.l2vpn.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4:123:2:1/96                    
+*                         1.1.11.4                     100        I
+
+bgp.rtarget.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  0:0:0/0                     
+*                         1.1.11.4                     100        I
+
+root@vmx6> 
+
+vpls prefixes are coming from aggregation not from rr2
+
+root@vmx4> show route receive-protocol bgp 1.1.56.6 
+
+inet.0: 22 destinations, 24 routes (22 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6/32             1.1.56.6                     100        I
+
+inet.3: 9 destinations, 10 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6/32             1.1.56.6                     100        I
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 12.12.12.6/32           1.1.56.6                     100        I
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+mpls.0: 24 destinations, 24 routes (24 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6:1:12.12.12.6/32                    
+*                         1.1.56.6                     100        I
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+                                        
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.l2vpn.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6:123:3:1/96                    
+*                         1.1.56.6                     100        I
+
+VPLS1.l2vpn.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6:123:3:1/96                    
+*                         1.1.56.6                     100        I
+
+l2circuit.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  100:100:1/96                    
+                          1.1.56.6                     100        I
+  100:100:123/96                    
+                          1.1.56.6                     100        I
+
+root@vmx4> 
+
+
+vmx2 doesnt have vpls endponts.
+
+root@rr2> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 3 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0               
+                       3          1          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       1          1          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.1.10                100        210        210       0       2     1:33:48 Establ
+  bgp.l3vpn.0: 2/2/2/0
+1.1.11.2                100        271        279       0       1     1:58:45 Establ
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+1.1.11.4                100        281        276       0       1     2:00:47 Establ
+  inet.0: 1/2/2/0
+  bgp.l3vpn.0: 2/2/2/0
+  bgp.l2vpn.0: 1/1/1/0
+
+
+
