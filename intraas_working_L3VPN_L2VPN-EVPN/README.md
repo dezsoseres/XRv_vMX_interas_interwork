@@ -24,7 +24,7 @@ EVPN:
         |-------------------|------|
                 xconn         EVPN
 
- all ce routers can ping each-others
+ all ce routers can ping each-other.
 
 ```
 
