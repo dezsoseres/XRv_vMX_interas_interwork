@@ -4,7 +4,7 @@
 summary:
 reachability inside the vrf A enpoints (xr:lo100, juni:lo0.100) is ok between cisco xr and vmx routers in the domain.
 vmx domain is seemless mpls, core (isis) and aggregation (ospf) have no redistribution between them.
-core ASBRs are bgp rrs towards the aggregation. :)
+core ASBR (vmx4) is bgp RR towards the aggregation. :)
 
 it is an example config for L3VPN and L2VPN H-VPLS.
 L3VPN: 
