@@ -211,6 +211,7 @@ Protocol  Address          Age (min)  Hardware Addr   Type   Interface
 Internet  22.22.22.1              -   ca0d.ff1e.0038  ARPA   FastEthernet2/0
 Internet  22.22.22.2            128   ca01.fdf1.0000  ARPA   FastEthernet2/0
 Internet  22.22.22.3            128   ca13.0a28.0038  ARPA   FastEthernet2/0
+
 ce1#ping 22.22.22.1
 
 Type escape sequence to abort.
