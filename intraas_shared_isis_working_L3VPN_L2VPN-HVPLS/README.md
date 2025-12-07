@@ -9,6 +9,7 @@ vmx domain is seemless mpls, core (isis) and aggregation (ospf) have no redistri
 core ASBR (vmx4) is bgp RR towards the aggregation. :)
 
 it is an example config for L3VPN and L2VPN H-VPLS.
+mpls is simple ldp not SR-MPLS.
 
 L3VPN: 
   every xr,vmx has a vrf loopback (xr:lo100, juni:lo0.100), they can reach each-other.
@@ -217,6 +218,32 @@ Internet  22.22.22.1              -   ca0d.ff1e.0038  ARPA   FastEthernet2/0
 Internet  22.22.22.2             22   ca01.fdf1.0000  ARPA   FastEthernet2/0
 Internet  22.22.22.3             22   ca13.0a28.0038  ARPA   FastEthernet2/0
 ce1#
+
+root@vmx4> show vpls mac-table 
+
+MAC flags       (S -static MAC, D -dynamic MAC, L -locally learned, C -Control MAC
+    O -OVSDB MAC, SE -Statistics enabled, NM -Non configured MAC, R -Remote PE MAC, P -Pinned MAC)
+
+Routing instance : VPLS1
+ Bridging domain : __VPLS1__, VLAN : NA
+   MAC                 MAC      Logical          NH     MAC         active
+   address             flags    interface        Index  property    source
+   ca:01:fd:f1:00:00   D        ge-0/0/2.0      
+   ca:0d:ff:1e:00:38   D        lsi.1048576     
+   ca:13:0a:28:00:38   D        lsi.1048577     
+
+root@vmx6> show vpls mac-table 
+
+MAC flags       (S -static MAC, D -dynamic MAC, L -locally learned, C -Control MAC
+    O -OVSDB MAC, SE -Statistics enabled, NM -Non configured MAC, R -Remote PE MAC, P -Pinned MAC)
+
+Routing instance : VPLS1
+ Bridging domain : __VPLS1__, VLAN : NA
+   MAC                 MAC      Logical          NH     MAC         active
+   address             flags    interface        Index  property    source
+   ca:01:fd:f1:00:00   D        lsi.1048576     
+   ca:0d:ff:1e:00:38   D        lsi.1048576     
+   ca:13:0a:28:00:38   D        ge-0/0/2.0      
 
 ```
 
