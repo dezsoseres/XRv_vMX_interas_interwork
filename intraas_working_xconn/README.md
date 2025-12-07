@@ -5,6 +5,11 @@
 xconnects are working between xrs, xrs-vmxs, vmxs.
 
 ```
+      xr4 - xr2 - vmx2 - vmx4 
+       |-----------|-------|
+          isis L1   isis L2 
+              <----|
+          leak L2 /32 routes
 
 root@vmx4> show l2circuit connections 
 Layer-2 Circuit Connections:

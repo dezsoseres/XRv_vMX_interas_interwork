@@ -18,6 +18,9 @@ EVPN:
                            ce2
                             |
  ce1 - xr4 - xr2 - vmx2 - vmx4 - vmx6 - ce3
+        |-----------|-------|------|
+           isis L1   isis L2  ospf
+
         |-------------------|------|
                 xconn         EVPN
 
@@ -87,6 +90,9 @@ EVPN:
                            ce2
                             |
  ce1 - xr4 - xr2 - vmx2 - vmx4 - vmx6 - ce3
+        |-----------|-------|------|
+           isis L1   isis L2  ospf
+
         |-------------------|------|
                 xconn         EVPN
 
