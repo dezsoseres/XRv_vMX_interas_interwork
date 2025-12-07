@@ -1,0 +1,182 @@
+RP/0/RP0/CPU0:xrv4#sh isis neighbors 
+Sun Dec  7 19:39:52.487 UTC
+
+IS-IS 100 neighbors:
+System Id      Interface        SNPA           State Holdtime Type IETF-NSF
+rr1            Gi0/0/0/3        *PtoP*         Up    22       L1   Capable 
+xrv2           Gi0/0/0/1        *PtoP*         Up    27       L1   Capable 
+
+Total neighbor count: 2
+RP/0/RP0/CPU0:xrv4#
+
+RP/0/RP0/CPU0:xrv2#sh isis neighbors 
+Sun Dec  7 19:39:58.559 UTC
+
+IS-IS 100 neighbors:
+System Id      Interface        SNPA           State Holdtime Type IETF-NSF
+xrv4           Gi0/0/0/1        *PtoP*         Up    25       L1   Capable 
+vmx2           Gi0/0/0/2        *PtoP*         Up    25       L1   Capable 
+
+Total neighbor count: 2
+RP/0/RP0/CPU0:xrv2#
+
+rr1#sh isis neighbors 
+
+Tag 100:
+System Id       Type Interface     IP Address      State Holdtime Circuit Id
+xrv4            L1   Gi1           10.0.0.8        UP    20       00
+rr1#
+
+root@vmx2> show isis adjacency 
+Interface             System         L State         Hold (secs) SNPA
+ge-0/0/1.0            vmx4           2  Up                    23
+ge-0/0/2.0            xrv2           1  Up                    28
+
+root@vmx4> show isis adjacency 
+Interface             System         L State         Hold (secs) SNPA
+ge-0/0/1.0            vmx2           2  Up                    19
+ge-0/0/4.0            rr2            2  Up                    25
+
+root@vmx4> show ospf neighbor 
+Address          Interface              State           ID               Pri  Dead
+12.0.0.5         ge-0/0/3.0             Full            1.1.56.6         128    33
+
+root@vmx6> show ospf neighbor     
+Address          Interface              State           ID               Pri  Dead
+12.0.0.4         ge-0/0/3.0             Full            1.1.11.4         128    36
+
+RP/0/RP0/CPU0:xrv2#sh route isis 
+Sun Dec  7 19:42:52.459 UTC
+
+i L1 1.1.1.4/32 [115/10] via 10.0.0.7, 01:56:28, GigabitEthernet0/0/0/1
+i L1 1.1.1.10/32 [115/20] via 10.0.0.7, 01:56:28, GigabitEthernet0/0/0/1
+i L1 1.1.11.2/32 [115/10] via 20.0.0.3, 01:56:28, GigabitEthernet0/0/0/2
+i ia 1.1.11.4/32 [115/1010] via 20.0.0.3, 01:00:09, GigabitEthernet0/0/0/2
+i ia 1.1.11.10/32 [115/2010] via 20.0.0.3, 00:59:53, GigabitEthernet0/0/0/2
+i L1 10.0.0.2/31 [115/20] via 10.0.0.7, 01:56:28, GigabitEthernet0/0/0/1
+i L1 10.0.0.8/31 [115/20] via 10.0.0.7, 01:56:28, GigabitEthernet0/0/0/1
+i L1 11.0.0.6/31 [115/1010] via 20.0.0.3, 01:56:28, GigabitEthernet0/0/0/2
+RP/0/RP0/CPU0:xrv2#
+
+RP/0/RP0/CPU0:xrv4#sh route isis 
+Sun Dec  7 19:43:08.787 UTC
+
+i L1 1.1.1.2/32 [115/10] via 10.0.0.6, 01:56:42, GigabitEthernet0/0/0/1
+i L1 1.1.1.10/32 [115/10] via 10.0.0.9, 01:56:53, GigabitEthernet0/0/0/3
+i L1 1.1.11.2/32 [115/20] via 10.0.0.6, 01:56:42, GigabitEthernet0/0/0/1
+i ia 1.1.11.4/32 [115/1020] via 10.0.0.6, 01:00:25, GigabitEthernet0/0/0/1
+i ia 1.1.11.10/32 [115/2020] via 10.0.0.6, 01:00:09, GigabitEthernet0/0/0/1
+i L1 11.0.0.6/31 [115/1020] via 10.0.0.6, 01:56:42, GigabitEthernet0/0/0/1
+i L1 20.0.0.2/31 [115/20] via 10.0.0.6, 01:56:42, GigabitEthernet0/0/0/1
+RP/0/RP0/CPU0:xrv4#
+
+rr1#sh ip route isis 
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is not set
+
+      1.0.0.0/32 is subnetted, 6 subnets
+i L1     1.1.1.2 [115/20] via 10.0.0.8, 01:57:15, GigabitEthernet1
+i L1     1.1.1.4 [115/10] via 10.0.0.8, 01:57:21, GigabitEthernet1
+i L1     1.1.11.2 [115/30] via 10.0.0.8, 01:57:15, GigabitEthernet1
+i ia     1.1.11.4 [115/1030] via 10.0.0.8, 01:00:56, GigabitEthernet1
+i ia     1.1.11.10 [115/2030] via 10.0.0.8, 01:00:40, GigabitEthernet1
+      10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks
+i L1     10.0.0.2/31 [115/20] via 10.0.0.8, 01:57:21, GigabitEthernet1
+i L1     10.0.0.6/31 [115/20] via 10.0.0.8, 01:57:21, GigabitEthernet1
+      11.0.0.0/31 is subnetted, 1 subnets
+i L1     11.0.0.6 [115/1030] via 10.0.0.8, 01:57:15, GigabitEthernet1
+      20.0.0.0/31 is subnetted, 1 subnets
+i L1     20.0.0.2 [115/30] via 10.0.0.8, 01:57:15, GigabitEthernet1
+rr1# 
+
+root@vmx2> show route protocol isis table inet.0 
+
+inet.0: 20 destinations, 20 routes (20 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.1.2/32         *[IS-IS/15] 01:57:44, metric 1000
+                    >  to 20.0.0.2 via ge-0/0/2.0
+1.1.1.4/32         *[IS-IS/15] 01:57:44, metric 1010
+                    >  to 20.0.0.2 via ge-0/0/2.0
+1.1.1.10/32        *[IS-IS/15] 01:57:44, metric 1020
+                    >  to 20.0.0.2 via ge-0/0/2.0
+1.1.11.4/32        *[IS-IS/18] 01:01:27, metric 1000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+1.1.11.10/32       *[IS-IS/18] 01:01:11, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+10.0.0.2/31        *[IS-IS/15] 01:57:44, metric 1020
+                    >  to 20.0.0.2 via ge-0/0/2.0
+10.0.0.6/31        *[IS-IS/15] 01:57:44, metric 1010
+                    >  to 20.0.0.2 via ge-0/0/2.0
+10.0.0.8/31        *[IS-IS/15] 01:57:44, metric 1020
+                    >  to 20.0.0.2 via ge-0/0/2.0
+11.0.0.2/31        *[IS-IS/18] 01:01:27, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+11.0.0.8/31        *[IS-IS/18] 01:01:27, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+12.0.0.4/31        *[IS-IS/18] 01:01:27, metric 2000
+                    >  to 11.0.0.7 via ge-0/0/1.0
+
+
+root@vmx4> show route protocol isis table inet.0 
+
+inet.0: 22 destinations, 24 routes (22 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.1.2/32         *[IS-IS/18] 01:01:31, metric 2000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.1.4/32         *[IS-IS/18] 01:01:31, metric 2010
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.1.10/32        *[IS-IS/18] 01:01:31, metric 2020
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.2/32        *[IS-IS/18] 01:01:31, metric 1000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+1.1.11.10/32       *[IS-IS/18] 01:01:56, metric 1000
+                    >  to 11.0.0.9 via ge-0/0/4.0
+10.0.0.2/31        *[IS-IS/18] 01:01:31, metric 2020
+                    >  to 11.0.0.6 via ge-0/0/1.0
+10.0.0.6/31        *[IS-IS/18] 01:01:31, metric 2010
+                    >  to 11.0.0.6 via ge-0/0/1.0
+10.0.0.8/31        *[IS-IS/18] 01:01:31, metric 2020
+                    >  to 11.0.0.6 via ge-0/0/1.0
+20.0.0.2/31        *[IS-IS/18] 01:01:31, metric 2000
+                    >  to 11.0.0.6 via ge-0/0/1.0
+
+root@vmx4> 
+
+
+root@vmx6> show route protocol ospf table inet.0 
+
+inet.0: 8 destinations, 10 routes (8 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+1.1.11.4/32        *[OSPF/10] 01:01:24, metric 1000
+                    >  to 12.0.0.4 via ge-0/0/3.0
+1.1.56.6/32         [OSPF/10] 01:02:21, metric 0
+                    >  via lo0.0
+224.0.0.5/32       *[OSPF/10] 01:02:28, metric 1
+                       MultiRecv
+
+root@vmx6> 
+
+
+
+
+
+
+
+
+
+

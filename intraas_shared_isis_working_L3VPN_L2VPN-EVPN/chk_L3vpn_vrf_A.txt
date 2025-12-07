@@ -1,0 +1,349 @@
+RP/0/RP0/CPU0:xrv4#sh route vrf A
+Sun Dec  7 19:35:04.015 UTC
+
+Codes: C - connected, S - static, R - RIP, B - BGP, (>) - Diversion path
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - ISIS, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, su - IS-IS summary null, * - candidate default
+       U - per-user static route, o - ODR, L - local, G  - DAGR, l - LISP
+       A - access/subscriber, a - Application route
+       M - mobile route, r - RPL, t - Traffic Engineering, (!) - FRR Backup path
+
+Gateway of last resort is not set
+
+B    11.11.11.2/32 [200/0] via 1.1.1.2 (nexthop in vrf default), 00:26:38
+L    11.11.11.4/32 is directly connected, 01:49:36, Loopback100
+B    12.12.12.2/32 [200/0] via 1.1.11.2 (nexthop in vrf default), 00:25:24
+B    12.12.12.4/32 [200/0] via 1.1.11.4 (nexthop in vrf default), 00:25:25
+B    12.12.12.6/32 [200/1] via 1.1.11.4 (nexthop in vrf default), 00:20:54
+RP/0/RP0/CPU0:xrv4#ping vrf A 11.11.11.2
+Sun Dec  7 19:35:12.785 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 11.11.11.2 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/4 ms
+RP/0/RP0/CPU0:xrv4#ping vrf A 11.11.11.4
+Sun Dec  7 19:35:14.593 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 11.11.11.4 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+RP/0/RP0/CPU0:xrv4#ping vrf A 12.12.12.2
+Sun Dec  7 19:35:20.823 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.2 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+RP/0/RP0/CPU0:xrv4#ping vrf A 12.12.12.4
+Sun Dec  7 19:35:27.080 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.4 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/3 ms
+RP/0/RP0/CPU0:xrv4#ping vrf A 12.12.12.6
+Sun Dec  7 19:35:28.664 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.6 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 3/3/4 ms
+RP/0/RP0/CPU0:xrv4#
+
+
+RP/0/RP0/CPU0:xrv2#sh route vrf A
+Sun Dec  7 19:36:14.725 UTC
+
+Codes: C - connected, S - static, R - RIP, B - BGP, (>) - Diversion path
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - ISIS, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, su - IS-IS summary null, * - candidate default
+       U - per-user static route, o - ODR, L - local, G  - DAGR, l - LISP
+       A - access/subscriber, a - Application route
+       M - mobile route, r - RPL, t - Traffic Engineering, (!) - FRR Backup path
+
+Gateway of last resort is not set
+
+L    11.11.11.2/32 is directly connected, 01:50:51, Loopback100
+B    11.11.11.4/32 [200/0] via 1.1.1.4 (nexthop in vrf default), 00:27:45
+B    12.12.12.2/32 [200/0] via 1.1.11.2 (nexthop in vrf default), 00:26:35
+B    12.12.12.4/32 [200/0] via 1.1.11.4 (nexthop in vrf default), 00:26:36
+B    12.12.12.6/32 [200/1] via 1.1.11.4 (nexthop in vrf default), 00:22:05
+RP/0/RP0/CPU0:xrv2#ping vrf A 11.11.11.2
+Sun Dec  7 19:36:21.786 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 11.11.11.2 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/21 ms
+RP/0/RP0/CPU0:xrv2#ping vrf A 11.11.11.4
+Sun Dec  7 19:36:23.507 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 11.11.11.4 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/3 ms
+RP/0/RP0/CPU0:xrv2#ping vrf A 12.12.12.2
+Sun Dec  7 19:36:29.567 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.2 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/4 ms
+RP/0/RP0/CPU0:xrv2#ping vrf A 12.12.12.4
+Sun Dec  7 19:36:31.408 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.4 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/5 ms
+RP/0/RP0/CPU0:xrv2#ping vrf A 12.12.12.6
+Sun Dec  7 19:36:32.960 UTC
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 12.12.12.6 timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/3 ms
+RP/0/RP0/CPU0:xrv2#
+
+
+root@vmx2> show route table A.inet.0 
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.2/32      *[BGP/170] 00:27:18, MED 0, localpref 100, from 1.1.11.10
+                      AS path: ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24009
+11.11.11.4/32      *[BGP/170] 00:27:18, MED 0, localpref 100, from 1.1.11.10
+                      AS path: ?, validation-state: unverified
+                    >  to 20.0.0.2 via ge-0/0/2.0, Push 24009, Push 24000(top)
+12.12.12.2/32      *[Direct/0] 01:53:50
+                    >  via lo0.100
+12.12.12.4/32      *[BGP/170] 00:52:14, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+12.12.12.6/32      *[BGP/170] 00:22:47, MED 1, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.7 via ge-0/0/1.0, Push 16
+
+root@vmx2> ping routing-instance A rapid 11.11.11.2 
+PING 11.11.11.2 (11.11.11.2): 56 data bytes
+!!!!!
+--- 11.11.11.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.202/1.808/3.046/0.665 ms
+
+root@vmx2> ping routing-instance A rapid 11.11.11.4    
+PING 11.11.11.4 (11.11.11.4): 56 data bytes
+!!!!!
+--- 11.11.11.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.695/3.141/6.436/1.789 ms
+
+root@vmx2> ping routing-instance A rapid 12.12.12.2    
+PING 12.12.12.2 (12.12.12.2): 56 data bytes
+!!!!!
+--- 12.12.12.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.009/0.016/0.031/0.008 ms
+
+root@vmx2> ping routing-instance A rapid 12.12.12.4    
+PING 12.12.12.4 (12.12.12.4): 56 data bytes
+!!!!!
+--- 12.12.12.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.170/1.454/1.643/0.171 ms
+
+root@vmx2> ping routing-instance A rapid 12.12.12.6    
+PING 12.12.12.6 (12.12.12.6): 56 data bytes
+!!!!!
+--- 12.12.12.6 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.886/2.911/5.742/1.446 ms
+
+root@vmx2> 
+
+
+root@vmx4> show route table A.inet.0 
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.2/32      *[BGP/170] 00:28:12, MED 0, localpref 100, from 1.1.11.10
+                      AS path: ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 24009, Push 18(top)
+11.11.11.4/32      *[BGP/170] 00:28:12, MED 0, localpref 100, from 1.1.11.10
+                      AS path: ?, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 24009, Push 19(top)
+12.12.12.2/32      *[BGP/170] 00:53:09, localpref 100, from 1.1.11.10
+                      AS path: I, validation-state: unverified
+                    >  to 11.0.0.6 via ge-0/0/1.0, Push 16
+12.12.12.4/32      *[Direct/0] 00:56:47
+                    >  via lo0.100
+12.12.12.6/32      *[BGP/170] 00:23:42, localpref 100, from 1.1.56.6
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.5 via ge-0/0/3.0, Push 17
+
+root@vmx4> ping routing-instance A rapid 11.11.11.2 
+PING 11.11.11.2 (11.11.11.2): 56 data bytes
+!!!!!
+--- 11.11.11.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.167/2.570/3.580/0.520 ms
+
+root@vmx4> ping routing-instance A rapid 11.11.11.4    
+PING 11.11.11.4 (11.11.11.4): 56 data bytes
+!!!!!
+--- 11.11.11.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.462/2.803/3.593/0.414 ms
+
+root@vmx4> ping routing-instance A rapid 12.12.12.2    
+PING 12.12.12.2 (12.12.12.2): 56 data bytes
+!!!!!
+--- 12.12.12.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.184/1.956/4.220/1.143 ms
+
+root@vmx4> ping routing-instance A rapid 12.12.12.4    
+PING 12.12.12.4 (12.12.12.4): 56 data bytes
+!!!!!
+--- 12.12.12.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.013/0.019/0.033/0.007 ms
+
+root@vmx4> ping routing-instance A rapid 12.12.12.6    
+PING 12.12.12.6 (12.12.12.6): 56 data bytes
+!!!!!
+--- 12.12.12.6 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.413/1.492/1.590/0.061 ms
+
+root@vmx4> 
+
+
+root@vmx6> show route table A.inet.0 
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+11.11.11.2/32      *[BGP/170] 00:24:20, MED 0, localpref 100, from 1.1.11.4
+                      AS path: ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+11.11.11.4/32      *[BGP/170] 00:24:20, MED 0, localpref 100, from 1.1.11.4
+                      AS path: ?, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.2/32      *[BGP/170] 00:24:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.4/32      *[BGP/170] 00:24:20, localpref 100, from 1.1.11.4
+                      AS path: I, validation-state: unverified
+                    >  to 12.0.0.4 via ge-0/0/3.0, Push 16
+12.12.12.6/32      *[Direct/0] 00:43:03
+                    >  via lo0.100
+
+root@vmx6> ping routing-instance A rapid 11.11.11.2
+PING 11.11.11.2 (11.11.11.2): 56 data bytes
+!!!!!
+--- 11.11.11.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.743/3.955/6.507/1.360 ms
+
+root@vmx6> ping routing-instance A rapid 11.11.11.4   
+PING 11.11.11.4 (11.11.11.4): 56 data bytes
+!!!!!
+--- 11.11.11.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.396/3.816/4.478/0.393 ms
+
+root@vmx6> ping routing-instance A rapid 12.12.12.2    
+PING 12.12.12.2 (12.12.12.2): 56 data bytes
+!!!!!
+--- 12.12.12.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.063/2.217/2.436/0.141 ms
+
+root@vmx6> ping routing-instance A rapid 12.12.12.4    
+PING 12.12.12.4 (12.12.12.4): 56 data bytes
+!!!!!
+--- 12.12.12.4 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.147/1.518/2.104/0.318 ms
+
+root@vmx6> ping routing-instance A rapid 12.12.12.6    
+PING 12.12.12.6 (12.12.12.6): 56 data bytes
+!!!!!
+--- 12.12.12.6 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.009/0.012/0.024/0.006 ms
+
+root@vmx6> 
+
+
+
+
+RP/0/RP0/CPU0:xrv2#sh bgp vpnv4 unicast summary 
+Sun Dec  7 19:45:45.820 UTC
+BGP router identifier 1.1.1.2, local AS number 100
+BGP generic scan interval 60 secs
+Non-stop routing is enabled
+BGP table state: Active
+Table ID: 0x0
+BGP main routing table version 55
+BGP NSR Initial initsync version 5 (Reached)
+BGP NSR/ISSU Sync-Group versions 0/0
+BGP scan interval 60 secs
+
+BGP is operating in STANDALONE mode.
+
+
+Process       RcvTblVer   bRIB/RIB   LabelVer  ImportVer  SendTblVer  StandbyVer
+Speaker              55         55         55         55          55           0
+
+Neighbor        Spk    AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down  St/PfxRcd
+1.1.1.10          0   100     371     288       55    0    0 00:38:15          4
+
+RP/0/RP0/CPU0:xrv2#
+
+RP/0/RP0/CPU0:xrv4#sh bgp vpnv4 unicast summary 
+Sun Dec  7 19:46:11.689 UTC
+BGP router identifier 1.1.1.4, local AS number 100
+BGP generic scan interval 60 secs
+Non-stop routing is enabled
+BGP table state: Active
+Table ID: 0x0
+BGP main routing table version 55
+BGP NSR Initial initsync version 4 (Reached)
+BGP NSR/ISSU Sync-Group versions 0/0
+BGP scan interval 60 secs
+
+BGP is operating in STANDALONE mode.
+
+
+Process       RcvTblVer   bRIB/RIB   LabelVer  ImportVer  SendTblVer  StandbyVer
+Speaker              55         55         55         55          55           0
+
+Neighbor        Spk    AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down  St/PfxRcd
+1.1.1.10          0   100     378     293       55    0    0 00:37:46          4
+
+RP/0/RP0/CPU0:xrv4#
+
+rr1# sh ip bgp vpnv4 all summary 
+BGP router identifier 1.1.1.10, local AS number 100
+BGP table version is 23, main routing table version 23
+5 network entries using 1280 bytes of memory
+5 path entries using 680 bytes of memory
+3/3 BGP path/bestpath attribute entries using 912 bytes of memory
+3 BGP rrinfo entries using 120 bytes of memory
+1 BGP extended community entries using 24 bytes of memory
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 3016 total bytes of memory
+BGP activity 12/7 prefixes, 15/10 paths, scan interval 60 secs
+6 networks peaked at 18:55:27 Dec 7 2025 UTC (00:51:06.484 ago)
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+1.1.1.2         4          100      42      54       23    0    0 00:39:02        1
+1.1.1.4         4          100      42      54       23    0    0 00:38:07        1
+1.1.11.10       4          100      87      86       23    0    0 00:36:54        3
+
+rr1#
+

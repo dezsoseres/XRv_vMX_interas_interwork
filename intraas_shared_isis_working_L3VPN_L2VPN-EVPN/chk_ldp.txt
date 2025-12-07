@@ -1,0 +1,115 @@
+
+RP/0/RP0/CPU0:xrv2#sh mpls ldp neighbor 
+Sun Dec  7 21:13:40.029 UTC
+
+Peer LDP Identifier: 1.1.11.2:0
+  TCP connection: 1.1.11.2:63314 - 1.1.1.2:646
+  Graceful Restart: No
+  Session Holdtime: 30 sec
+  State: Oper; Msgs sent/rcvd: 1447/1261; Downstream-Unsolicited
+  Up time: 03:27:14
+  LDP Discovery Sources:
+    IPv4: (1)
+      GigabitEthernet0/0/0/2
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (3)
+      1.1.11.2       11.0.0.6       20.0.0.3       
+    IPv6: (0)
+
+Peer LDP Identifier: 1.1.1.4:0
+  TCP connection: 1.1.1.4:36917 - 1.1.1.2:646
+  Graceful Restart: No
+  Session Holdtime: 180 sec
+  State: Oper; Msgs sent/rcvd: 267/272; Downstream-Unsolicited
+  Up time: 03:27:10
+  LDP Discovery Sources:
+    IPv4: (1)
+      GigabitEthernet0/0/0/1
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (4)
+      1.1.1.4        10.0.0.3       10.0.0.7       10.0.0.8       
+    IPv6: (0)
+
+RP/0/RP0/CPU0:xrv2#
+
+
+RP/0/RP0/CPU0:xrv4#sh mpls ldp neighbor 
+Sun Dec  7 21:13:58.409 UTC
+
+Peer LDP Identifier: 1.1.1.2:0
+  TCP connection: 1.1.1.2:646 - 1.1.1.4:36917
+  Graceful Restart: No
+  Session Holdtime: 180 sec
+  State: Oper; Msgs sent/rcvd: 272/267; Downstream-Unsolicited
+  Up time: 03:27:28
+  LDP Discovery Sources:
+    IPv4: (1)
+      GigabitEthernet0/0/0/1
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (4)
+      1.1.1.2        10.0.0.1       10.0.0.6       20.0.0.2       
+    IPv6: (0)
+
+Peer LDP Identifier: 1.1.1.10:0
+  TCP connection: 1.1.1.10:28354 - 1.1.1.4:646
+  Graceful Restart: No
+  Session Holdtime: 180 sec
+  State: Oper; Msgs sent/rcvd: 268/270; Downstream-Unsolicited
+  Up time: 03:27:08
+  LDP Discovery Sources:
+    IPv4: (1)
+      GigabitEthernet0/0/0/3
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (2)
+      1.1.1.10       10.0.0.9       
+    IPv6: (0)
+
+Peer LDP Identifier: 1.1.11.4:0
+  TCP connection: 1.1.11.4:58292 - 1.1.1.4:646
+  Graceful Restart: No
+  Session Holdtime: 30 sec
+  State: Oper; Msgs sent/rcvd: 770/675; Downstream-Unsolicited
+  Up time: 01:50:06
+  LDP Discovery Sources:
+    IPv4: (1)
+      Targeted Hello (1.1.1.4 -> 1.1.11.4, active)
+    IPv6: (0)
+  Addresses bound to this peer:
+    IPv4: (4)
+      1.1.11.4       11.0.0.7       11.0.0.8       12.0.0.4       
+    IPv6: (0)
+
+RP/0/RP0/CPU0:xrv4#
+
+rr1#sh mpls ldp neighbor 
+    Peer LDP Ident: 1.1.1.4:0; Local LDP Ident 1.1.1.10:0
+        TCP connection: 1.1.1.4.646 - 1.1.1.10.28354
+        State: Oper; Msgs sent/rcvd: 270/269; Downstream
+        Up time: 03:27:23
+        LDP discovery sources:
+          GigabitEthernet1, Src IP addr: 10.0.0.8
+        Addresses bound to peer LDP Ident:
+          1.1.1.4         10.0.0.3        10.0.0.7        10.0.0.8        
+rr1# 
+
+root@vmx2> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+20.0.0.2                            ge-0/0/2.0      1.1.1.2:0            12
+11.0.0.7                            ge-0/0/1.0      1.1.11.4:0           12
+
+root@vmx4> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+1.1.1.4                             lo0.0           1.1.1.4:0            41
+11.0.0.6                            ge-0/0/1.0      1.1.11.2:0           14
+11.0.0.9                            ge-0/0/4.0      1.1.11.10:0          14
+12.0.0.5                            ge-0/0/3.0      1.1.56.6:0           13
+
+root@vmx6> show ldp neighbor 
+Address                             Interface       Label space ID     Hold time
+12.0.0.4                            ge-0/0/3.0      1.1.11.4:0           14
+
+

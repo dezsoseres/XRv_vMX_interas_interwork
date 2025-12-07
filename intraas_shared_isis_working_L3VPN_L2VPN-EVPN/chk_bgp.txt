@@ -1,0 +1,328 @@
+
+
+root@vmx2> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 1 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       0          0          0          0          0          0
+inet.0               
+                       1          1          0          0          0          0
+bgp.l3vpn.0          
+                       4          4          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+bgp.evpn.0           
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100         54         46       0       1       18:16 Establ
+  inet.0: 1/1/1/0
+  bgp.l3vpn.0: 4/4/4/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 4/4/4/0                     
+  bgp.evpn.0: 0/0/0/0
+
+root@vmx4> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 2 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       2          0          0          0          0          0
+inet.0               
+                       1          0          0          0          0          0
+bgp.l3vpn.0          
+                       4          4          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+bgp.evpn.0           
+                       3          3          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.10               100         49         53       0       1       18:31 Establ
+  inet.0: 0/0/0/0
+  bgp.l3vpn.0: 3/3/3/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 3/3/3/0                     
+  bgp.evpn.0: 0/0/0/0
+  EVPN1.evpn.0: 0/0/0/0
+  __default_evpn__.evpn.0: 0/0/0/0
+1.1.56.6                100         54         65       0       0       19:17 Establ
+  bgp.rtarget.0: 0/2/2/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0
+  A.inet.0: 1/1/1/0
+  bgp.evpn.0: 3/3/3/0
+  EVPN1.evpn.0: 3/3/3/0
+  __default_evpn__.evpn.0: 0/0/0/0
+
+root@vmx4> 
+
+root@vmx6> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 2 Down peers: 1
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.rtarget.0        
+                       1          1          0          0          0          0
+inet.0               
+                       1          0          0          0          0          0
+inet6.0              
+                       0          0          0          0          0          0
+bgp.l3vpn.0          
+                       4          4          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+bgp.evpn.0           
+                       4          4          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.11.3                100          0          0       0       0       21:22 Active
+1.1.11.4                100         67         53       0       1       19:29 Establ
+  bgp.rtarget.0: 1/1/1/0
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 4/4/4/0
+  bgp.l2vpn.0: 0/0/0/0
+  bgp.evpn.0: 4/4/4/0
+  EVPN1.evpn.0: 4/4/4/0
+  A.inet.0: 4/4/4/0
+  __default_evpn__.evpn.0: 0/0/0/0
+
+root@vmx6> 
+
+root@rr2> show bgp summary 
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 1 Peers: 3 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0               
+                       3          1          0          0          0          0
+bgp.l3vpn.0          
+                       5          5          0          0          0          0
+bgp.l2vpn.0          
+                       0          0          0          0          0          0
+inet.3               
+                       0          0          0          0          0          0
+bgp.evpn.0           
+                       5          5          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+1.1.1.10                100         46         45       0       0       19:04 Establ
+  bgp.l3vpn.0: 2/2/2/0
+1.1.11.2                100         51         56       0       0       19:12 Establ
+  inet.0: 0/1/1/0
+  bgp.l3vpn.0: 1/1/1/0
+  bgp.l2vpn.0: 0/0/0/0                  
+  bgp.evpn.0: 0/0/0/0
+1.1.11.4                100         56         49       0       0       19:12 Establ
+  inet.0: 1/2/2/0
+  bgp.l3vpn.0: 2/2/2/0
+  bgp.l2vpn.0: 0/0/0/0
+  bgp.evpn.0: 5/5/5/0
+
+
+root@vmx2> show route receive-protocol bgp 1.1.11.10 
+
+inet.0: 20 destinations, 20 routes (20 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 1.1.56.6/32             1.1.11.4             1       100        I
+
+inet.3: 9 destinations, 9 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 1.1.56.6/32             1.1.11.4             1       100        I
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 11.11.11.2/32           1.1.1.2              0       100        ?
+* 11.11.11.4/32           1.1.1.4              0       100        ?
+* 12.12.12.4/32           1.1.11.4                     100        I
+* 12.12.12.6/32           1.1.11.4             1       100        I
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+mpls.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4:1:12.12.12.4/32                    
+*                         1.1.11.4                     100        I
+  1.1.56.6:1:12.12.12.6/32                    
+*                         1.1.11.4             1       100        I
+  100:1:11.11.11.2/32                    
+*                         1.1.1.2              0       100        ?
+  100:1:11.11.11.4/32                    
+*                         1.1.1.4              0       100        ?
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+
+root@vmx2> 
+
+
+
+
+root@vmx4> show route receive-protocol bgp 1.1.11.10 
+
+inet.0: 22 destinations, 24 routes (22 active, 0 holddown, 0 hidden)
+
+inet.3: 9 destinations, 10 routes (9 active, 0 holddown, 0 hidden)
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 11.11.11.2/32           1.1.1.2              0       100        ?
+* 11.11.11.4/32           1.1.1.4              0       100        ?
+* 12.12.12.2/32           1.1.11.2                     100        I
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+mpls.0: 26 destinations, 26 routes (26 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.2:1:12.12.12.2/32                    
+*                         1.1.11.2                     100        I
+  100:1:11.11.11.2/32                    
+*                         1.1.1.2              0       100        ?
+  100:1:11.11.11.4/32                    
+*                         1.1.1.4              0       100        ?
+                                        
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+l2circuit.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
+
+bgp.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+
+EVPN1.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+
+root@vmx4> show route receive-protocol bgp 1.1.56.6     
+
+inet.0: 22 destinations, 24 routes (22 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6/32             1.1.56.6                     100        I
+
+inet.3: 9 destinations, 10 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6/32             1.1.56.6                     100        I
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 12.12.12.6/32           1.1.56.6                     100        I
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+mpls.0: 26 destinations, 26 routes (26 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.56.6:1:12.12.12.6/32                    
+*                         1.1.56.6                     100        I
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+                                        
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+l2circuit.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 3 destinations, 5 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  100:100:1/96                    
+                          1.1.56.6                     100        I
+  100:100:1001/96                    
+                          1.1.56.6                     100        I
+
+bgp.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  2:1.1.56.6:1001::0::ca:13:0a:28:00:38/304 MAC/IP            
+*                         1.1.56.6                     100        I
+  2:1.1.56.6:1001::0::ca:13:0a:28:00:38::22.22.22.3/304 MAC/IP            
+*                         1.1.56.6                     100        I
+  3:1.1.56.6:1001::0::1.1.56.6/248 IM                
+*                         1.1.56.6                     100        I
+
+EVPN1.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  2:1.1.56.6:1001::0::ca:13:0a:28:00:38/304 MAC/IP            
+*                         1.1.56.6                     100        I
+  2:1.1.56.6:1001::0::ca:13:0a:28:00:38::22.22.22.3/304 MAC/IP            
+*                         1.1.56.6                     100        I
+  3:1.1.56.6:1001::0::1.1.56.6/248 IM                
+*                         1.1.56.6                     100        I
+
+root@vmx4> 
+
+root@vmx6> show route receive-protocol bgp 1.1.11.4 
+
+inet.0: 8 destinations, 10 routes (8 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+inet.3: 1 destinations, 2 routes (1 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.4/32             1.1.11.4                     100        I
+
+A.inet.0: 5 destinations, 5 routes (5 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 11.11.11.2/32           1.1.11.4             0       100        ?
+* 11.11.11.4/32           1.1.11.4             0       100        ?
+* 12.12.12.2/32           1.1.11.4                     100        I
+* 12.12.12.4/32           1.1.11.4                     100        I
+
+mpls.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
+
+bgp.l3vpn.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  1.1.11.2:1:12.12.12.2/32                    
+*                         1.1.11.4                     100        I
+  1.1.11.4:1:12.12.12.4/32                    
+*                         1.1.11.4                     100        I
+  100:1:11.11.11.2/32                    
+*                         1.1.11.4             0       100        ?
+  100:1:11.11.11.4/32                    
+*                         1.1.11.4             0       100        ?
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+A.inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+bgp.rtarget.0: 3 destinations, 3 routes (3 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  0:0:0/0                     
+*                         1.1.11.4                     100        I
+
+bgp.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  2:1.1.11.4:1001::0::ca:01:fd:f1:00:00/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  2:1.1.11.4:1001::0::ca:0d:ff:1e:00:38/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  2:1.1.11.4:1001::0::ca:01:fd:f1:00:00::22.22.22.2/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  3:1.1.11.4:1001::0::1.1.11.4/248 IM                
+*                         1.1.11.4                     100        I
+
+EVPN1.evpn.0: 7 destinations, 7 routes (7 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  2:1.1.11.4:1001::0::ca:01:fd:f1:00:00/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  2:1.1.11.4:1001::0::ca:0d:ff:1e:00:38/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  2:1.1.11.4:1001::0::ca:01:fd:f1:00:00::22.22.22.2/304 MAC/IP            
+*                         1.1.11.4                     100        I
+  3:1.1.11.4:1001::0::1.1.11.4/248 IM                
+*                         1.1.11.4                     100        I
+
+root@vmx6> 
+
+
