@@ -1,3 +1,5 @@
+# cisco XR - juniper MX interworking scenarios L3VPN, L2VPN H-VPLS
+
 ![image info](./topology.jpg)
 
 ```
@@ -16,7 +18,7 @@ H-VPLS:
                             |
  ce1 - xr4 - xr2 - vmx2 - vmx4 - vmx6 - ce3
         |-------------------|------|
-              xconn           VPLS
+                xconn         VPLS
 
  all ce routers can ping each-others
 
