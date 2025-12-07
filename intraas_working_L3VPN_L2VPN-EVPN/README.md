@@ -90,7 +90,7 @@ EVPN:
         |-------------------|------|
                 xconn         EVPN
 
- all ce routers can ping each-others
+ all ce routers can ping each-other.
 
 
 RP/0/RP0/CPU0:xrv4# sh l2vpn xconnect 
