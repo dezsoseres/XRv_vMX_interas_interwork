@@ -1,5 +1,5 @@
 
-[xr L2vpn config guide](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5500/vpn/77x/b-l2vpn-cg-ncs5500-77x/configure-evpn-irb.html)
+xr L2vpn config guide[https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5500/vpn/77x/b-l2vpn-cg-ncs5500-77x/configure-evpn-irb.html](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5500/vpn/77x/b-l2vpn-cg-ncs5500-77x/configure-evpn-irb.html)
 
 
 same erro in forum
