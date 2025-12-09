@@ -1,0 +1,23 @@
+interface GigabitEthernet0/0/0/2.1 l2transport
+ encapsulation dot1q 1 native
+!
+
+RP/0/RP0/CPU0:xrv4(config-l2vpn-bg-bd-ac)#sh configuration failed
+Tue Dec  9 16:31:46.946 UTC
+!! SEMANTIC ERRORS: This configuration was rejected by 
+!! the system due to semantic errors. The individual 
+!! errors with each failed configuration command can be 
+!! found below.
+
+
+l2vpn
+ bridge group 201
+  bridge-domain 201
+   interface GigabitEthernet0/0/0/2.1
+!!% Invalid argument: VPLS Bridge domains not supported on this platform
+   !
+  !
+ !
+!
+end
+
