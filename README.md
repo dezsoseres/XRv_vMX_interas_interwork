@@ -1,4 +1,4 @@
-# cisco XR - juniper MX interworking / interAS scenarios
+# cisco XR - juniper MX interworking / inter AS / intra AS scenarios
 
 ![image info](./optionB_working_L3VPN/topology.jpg)
 
