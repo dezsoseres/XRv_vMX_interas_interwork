@@ -1,0 +1,16 @@
+root@vmx2# show | compare 
+[edit protocols bgp group RR family inet]
++       unicast;
+
+[edit]
+root@vmx2# commit 
+[edit protocols]
+  'bgp'
+    Error in neighbor 1.1.11.10 of group RR:
+peer cannot have both inet unicast and inet labeled-unicast nlri
+error: configuration check-out failed
+
+[edit]
+root@vmx2# 
+
+
